@@ -1,0 +1,14 @@
+# Derleme dosyaları
+*.o
+*.a
+CPP00/ex00/megaphone
+
+# Geçici dosyalar
+*~
+*.swp
+
+# IDE dosyaları
+.vscode/
+
+# OS dosyaları
+.DS_Store
