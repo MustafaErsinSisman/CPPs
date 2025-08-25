@@ -1,11 +1,15 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-class PhoneBook
+#include <iostream>
+
+class	PhoneBook
 {
-        public:
-        
-        private:
+	public:
+		void	getPhoneNumber();
+		void	setPhoneNumber(int newPhoneNumber);
+	private:
+		int	phoneNumber;
 };
 
 #endif

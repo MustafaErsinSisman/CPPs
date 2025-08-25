@@ -2,6 +2,7 @@
 *.o
 *.a
 CPP00/ex00/megaphone
+CPP00/ex01/phonebook
 
 # Geçici dosyalar
 *~
