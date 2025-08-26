@@ -1,11 +1,29 @@
 #include "Phonebook.hpp"
 
-void PhoneBook::getPhoneNumber()
+PhoneBook::PhoneBook()
 {
-	std::cout << PhoneBook::phoneNumber << std::endl;
+	this->phoneNumber = 0;
+}
+
+PhoneBook::PhoneBook(int newPhoneNumber)
+{
+	phoneNumber = newPhoneNumber;
+}
+
+int PhoneBook::getPhoneNumber()
+{
+	return phoneNumber;
 }
 
 void PhoneBook::setPhoneNumber(int newPhoneNumber)
 {
-	PhoneBook::phoneNumber = newPhoneNumber;
+	phoneNumber = newPhoneNumber;
+}
+
+void PhoneBook::printPhoneNumber()
+{
+	if (phoneNumber == 0)
+		std::cout << "No value entered..." << std::endl;
+	else
+		std::cout << "phone number is " << phoneNumber << std::endl;
 }
