@@ -4,7 +4,9 @@ int	main(void)
 {
 	PhoneBook	p1;
 
-	std::cout << "P1 info" << std::endl;
+	std::cout << "P1 info" << std::endl; //TODO namespace nedir detaylı öğren 
+						//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
+						//TODO ve :: operatörü nasıl çalışıyor öğren
 	p1.printPhoneNumber();
 	p1.setPhoneNumber(123);
 	p1.printPhoneNumber();

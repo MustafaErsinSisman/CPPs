@@ -8,9 +8,9 @@ class	PhoneBook
 	private:
 		int	phoneNumber;
 	public:
-		PhoneBook();
+		PhoneBook(); // consructec daha detaylı öğren
 		PhoneBook(int newPhoneNumber);
-		// ~PhoneBook();
+		// ~PhoneBook();	//TODO destructor öğren
 		int	getPhoneNumber();
 		void	setPhoneNumber(int newPhoneNumber);
 		void	printPhoneNumber();

@@ -1,14 +1,8 @@
 #include "Phonebook.hpp"
 
-PhoneBook::PhoneBook()
-{
-	this->phoneNumber = 0;
-}
+PhoneBook::PhoneBook() : phoneNumber(0) {} //TODO : kullanımı nasıl çalışıyor öğren
 
-PhoneBook::PhoneBook(int newPhoneNumber)
-{
-	phoneNumber = newPhoneNumber;
-}
+PhoneBook::PhoneBook(int newPhoneNumber) : phoneNumber(newPhoneNumber) {}
 
 int PhoneBook::getPhoneNumber()
 {
