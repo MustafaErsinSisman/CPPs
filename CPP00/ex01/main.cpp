@@ -1,26 +1,30 @@
-#include "Phonebook.hpp"
 
 	//TODO namespace nedir detaylı öğren 
 	//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
 	//TODO ve :: operatörü nasıl çalışıyor öğren
+	// constructor daha detaylı öğren
+
+	// TODO copy constructer öğren
+		// PhoneBook(const PhoneBook & copy); // const olmalı mı
+	
+	//TODO destructor öğren
+	// operator overloading daha detaylı öğren
+	
+	//TODO classlarda PhoneBook::PhoneBook() : phoneNumber(0) {} // : kullanımı nasıl çalışıyor öğren
+#include "Phonebook.hpp"
+#include "Contact.hpp"
 
 int	main(void)
 {
-	PhoneBook	p1;
-	PhoneBook	p2;
-	int	newPhoneNumber;
-
-	std::cout << "1: " << std::endl;
-	p1.setPhoneNumber(123);
-	std::cout << "2: " << std::endl;
-	p2.setPhoneNumber(124);
-	std::cout << "3: " << std::endl;
-	newPhoneNumber = p1 + p2; // operator overloading
-	std::cout << "4: " << std::endl;
-	p2.printPhoneNumber();
-	std::cout << "New phoner number is " << newPhoneNumber << std::endl;
-	std::cout << "5: " << std::endl;
-
-
+	std::string cmd;
+	PhoneBook phonebook;
+	
+	while (1)
+	{
+		std::cout << "ADD SEARCH HELP EXIT" << std::endl;
+		std::cin >> cmd;
+		if (cmd == "EXIT")
+			break;
+	}
 	return (0);
 }
