@@ -1,36 +1,26 @@
 #include "Phonebook.hpp"
 
+	//TODO namespace nedir detaylı öğren 
+	//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
+	//TODO ve :: operatörü nasıl çalışıyor öğren
+
 int	main(void)
 {
 	PhoneBook	p1;
+	PhoneBook	p2;
+	int	newPhoneNumber;
 
-	std::cout << "P1 info" << std::endl; //TODO namespace nedir detaylı öğren 
-						//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
-						//TODO ve :: operatörü nasıl çalışıyor öğren
-	p1.printPhoneNumber();
+	std::cout << "1: " << std::endl;
 	p1.setPhoneNumber(123);
-	p1.printPhoneNumber();
-	std::cout << std::endl;
+	std::cout << "2: " << std::endl;
+	p2.setPhoneNumber(124);
+	std::cout << "3: " << std::endl;
+	newPhoneNumber = p1 + p2; // operator overloading
+	std::cout << "4: " << std::endl;
+	p2.printPhoneNumber();
+	std::cout << "New phoner number is " << newPhoneNumber << std::endl;
+	std::cout << "5: " << std::endl;
 
-	PhoneBook	*p2 = new PhoneBook();
-	
-	std::cout << "P2 info" << std::endl;
-	p2->printPhoneNumber();
-	p2->setPhoneNumber(123);
-	p2->printPhoneNumber();
-	std::cout << std::endl;
 
-	PhoneBook	*p3 = new PhoneBook(333);
-	
-	std::cout << "P3 info" << std::endl;
-	p3->printPhoneNumber();
-	p3->setPhoneNumber(123);
-	p3->printPhoneNumber();
-	std::cout << std::endl;
-
-	delete p2;
-	p2 = 0;
-	delete p3;
-	p3 = 0;
 	return (0);
 }
