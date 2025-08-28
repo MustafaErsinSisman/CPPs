@@ -17,14 +17,40 @@
 int	main(void)
 {
 	std::string cmd;
-	PhoneBook phonebook;
+    int personID;
+	PhoneBook phonebook = PhoneBook("phone book");
 	
-	while (1)
+    personID = 0;
+	do
 	{
+        if (personID == 8)
+            personID = 0;
 		std::cout << "ADD SEARCH HELP EXIT" << std::endl;
-		std::cin >> cmd;
-		if (cmd == "EXIT")
-			break;
-	}
+		if (!(std::cin >> cmd))
+            break;
+        if (cmd == "ADD")
+        {
+            phonebook.addContact(personID % 8);
+        }
+        else if (cmd == "SEARCH")
+        {
+            std::cout << "SEARCH selected" <<  std::endl;
+        }
+        else if (cmd == "HELP")
+        {
+            std::cout << "HELP selected" <<  std::endl;
+        }
+        else if (cmd == "EXIT")
+        {
+            std::cout << "EXIT selected" <<  std::endl;
+            break;
+        }
+        else
+        {
+            std::cout << "No this option..." <<  std::endl;
+        }
+        phonebook.getPhoneBook();
+        personID++;
+	}while (cmd != "");
 	return (0);
 }

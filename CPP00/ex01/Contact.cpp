@@ -1,5 +1,17 @@
 #include "Contact.hpp"
 
+Contact::Contact() {}
+
+Contact::~Contact()
+{
+	std::cout << std::endl
+                        << "Destructed the "
+                        << firstName
+                        << " "
+                        << lastName
+                        << "infos"
+                        <<std::endl;
+}
 std::string Contact::getFirstName()
 {
         return firstName;
@@ -12,7 +24,7 @@ std::string Contact::getLastName()
 {
         return lastName;
 }
-void Contact::setLasttName(std::string newLastName)
+void Contact::setLastName(std::string newLastName)
 {
         lastName = newLastName;
 }
@@ -20,7 +32,7 @@ std::string Contact::getNickName()
 {
         return nickName;
 }
-std::string Contact::setNickName(std::string newNickName)
+void Contact::setNickName(std::string newNickName)
 {
         nickName = newNickName;
 }
