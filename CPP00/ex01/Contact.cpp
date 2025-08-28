@@ -1,17 +1,5 @@
 #include "Contact.hpp"
 
-Contact::Contact() {}
-
-Contact::~Contact()
-{
-	std::cout << std::endl
-                        << "Destructed the "
-                        << firstName
-                        << " "
-                        << lastName
-                        << "infos"
-                        <<std::endl;
-}
 std::string Contact::getFirstName()
 {
         return firstName;

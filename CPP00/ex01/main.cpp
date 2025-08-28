@@ -18,14 +18,14 @@ int	main(void)
 {
 	std::string cmd;
     int personID;
-	PhoneBook phonebook = PhoneBook("phone book");
+	PhoneBook phonebook;
 	
     personID = 0;
 	do
 	{
         if (personID == 8)
             personID = 0;
-		std::cout << "ADD SEARCH HELP EXIT" << std::endl;
+		std::cout << "ADD SEARCH EXIT" << std::endl;
 		if (!(std::cin >> cmd))
             break;
         if (cmd == "ADD")
@@ -34,22 +34,17 @@ int	main(void)
         }
         else if (cmd == "SEARCH")
         {
-            std::cout << "SEARCH selected" <<  std::endl;
-        }
-        else if (cmd == "HELP")
-        {
-            std::cout << "HELP selected" <<  std::endl;
+            phonebook.getPhoneBook();
         }
         else if (cmd == "EXIT")
         {
-            std::cout << "EXIT selected" <<  std::endl;
             break;
         }
         else
         {
             std::cout << "No this option..." <<  std::endl;
+            personID--;
         }
-        phonebook.getPhoneBook();
         personID++;
 	}while (cmd != "");
 	return (0);
