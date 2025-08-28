@@ -27,16 +27,42 @@ void PhoneBook::addContact(int newPerson)
 
 void PhoneBook::getPhoneBook()
 {
+	std::string personID;
+	int id;
+
+	std::cout << "|" << std::setw(10) << "INDEX"
+			<< "|" << std::setw(10) << "FIRST NAME"
+			<< "|" << std::setw(10)	<< "LAST NAME"
+			<< "|" << std::setw(10) << "NICKNAME"
+			<< "|" << std::endl;
 	for (size_t i = 0; i < 8; i++)
 	{
 		if (people[i].getFirstName() != "")
-			std::cout << i <<". First Name   :" << people[i].getFirstName() << std::endl;
-		if (people[i].getLastName() != "")
-			std::cout << i <<". Last Name    :" << people[i].getLastName() << std::endl;
-		if (people[i].getNickName() != "")
-			std::cout << i << ". Nickname    :" << people[i].getNickName() << std::endl;
-		if (people[i].getPhoneNumber() != "")
-			std::cout << i << ". Phonenumber :"<< people[i].getPhoneNumber() << std::endl;
-		std::cout << std::endl;
+			std::cout << "|" << std::setw(10) << i + 1
+					<< "|" << std::setw(10) << people[i].getFirstName()
+					<< "|" << std::setw(10) << people[i].getLastName()
+					<< "|" << std::setw(10) << people[i].getNickName()
+					<< "|" << std::endl;
 	}
+	id = 0;
+	while (1)
+	{
+		if (!(std::cin >> personID))
+			return;
+		id = std::atoi(personID.c_str());
+		if (id < 1 || id > 8)
+			std::cout << "Wrong id value. Please enter 1-8..." << std::endl;
+		else
+			break;
+	}
+	if (people[id - 1].getFirstName() != "")
+		std::cout << id << ". First Name  :" << people[id - 1].getFirstName() << std::endl;
+	else
+		std::cout << "Not listed in the phone book" << std::endl;
+	if (people[id - 1].getLastName() != "")
+		std::cout << id << ". Last Name   :" << people[id - 1].getLastName() << std::endl;
+	if (people[id - 1].getNickName() != "")
+		std::cout << id << ". Nickname    :" << people[id - 1].getNickName() << std::endl;
+	if (people[id - 1].getPhoneNumber() != "")
+		std::cout << id << ". Phonenumber :"<< people[id - 1].getPhoneNumber() << std::endl;
 }

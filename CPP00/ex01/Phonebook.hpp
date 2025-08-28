@@ -1,8 +1,9 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include <iostream>
 #include "Contact.hpp"
+#include <iomanip>
+#include <cstdlib>
 
 class	PhoneBook
 {
