@@ -16,19 +16,25 @@
 int	main(void)
 {
 	std::string cmd;
-    	int personID;
+	int personID;
 	PhoneBook phonebook;
 	
-    personID = 0;
+	personID = 0;
 	do
 	{
 		if (personID == 8)
 			personID = 0;
 		std::cout << "ADD SEARCH EXIT" << std::endl;
-		if (!(std::cin >> cmd))
+		if (!(std::getline(std::cin, cmd)))
 			break;
 		if (cmd == "ADD")
-			phonebook.addContact(personID++ % 8);
+		{
+			if (phonebook.addContact(personID++ % 8))
+			{
+				std::cout << std::endl;
+				break;
+			}
+		}
 		else if (cmd == "SEARCH")
 			phonebook.getPhoneBook();
 		else if (cmd == "EXIT")

@@ -12,6 +12,6 @@ class	PhoneBook
 		Contact	people[8];
 	public:
 		void getPhoneBook();
-		void addContact(int  newPerson);
+		int addContact(int  newPerson);
 };
 #endif
