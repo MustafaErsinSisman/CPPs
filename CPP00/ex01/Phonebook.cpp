@@ -20,6 +20,14 @@ static std::string getContactsInfos(std::string infos, std::string subject)
 	return infos;
 }
 
+std::string longInfosDisplay(std::string str)
+{
+	if (str.length() > 10)
+		return str.substr(0, 9) + ".";
+	else
+		return str;
+}
+
 int PhoneBook::addContact(int newPerson)
 {
 	std::string newFirstName;
@@ -86,16 +94,16 @@ void PhoneBook::getPhoneBook()
 	{
 		if (people[i].getFirstName() != "")
 			std::cout << "|" << std::setw(10) << i + 1
-					<< "|" << std::setw(10) << people[i].getFirstName()
-					<< "|" << std::setw(10) << people[i].getLastName()
-					<< "|" << std::setw(10) << people[i].getNickName()
+					<< "|" << std::setw(10) << longInfosDisplay(people[i].getFirstName())
+					<< "|" << std::setw(10) << longInfosDisplay(people[i].getLastName())
+					<< "|" << std::setw(10) << longInfosDisplay(people[i].getNickName())
 					<< "|" << std::endl;
 	}
 	id = 0;
 	while (1)
 	{
 		if (!std::getline(std::cin, personID))
-			break;
+			return ;
 		id = std::atoi(personID.c_str());
 		if (id < 1 || id > 8)
 			std::cout << "Wrong id value. Please enter 1-8..." << std::endl;
