@@ -11,7 +11,7 @@ class	PhoneBook
 		std::string	phoneBook;
 		Contact	people[8];
 	public:
-		void getPhoneBook();
+		int getPhoneBook();
 		int addContact(int  newPerson);
 };
 #endif

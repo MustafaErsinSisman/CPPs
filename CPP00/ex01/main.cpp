@@ -36,7 +36,13 @@ int	main(void)
 			}
 		}
 		else if (cmd == "SEARCH")
-			phonebook.getPhoneBook();
+		{
+			if (phonebook.getPhoneBook())
+			{
+				std::cout << std::endl;
+				break;
+			}
+		}
 		else if (cmd == "EXIT")
 			break;
 		else

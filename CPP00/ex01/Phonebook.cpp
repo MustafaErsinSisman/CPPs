@@ -2,12 +2,14 @@
 
 static std::string getContactsInfos(std::string infos, std::string subject)
 {
+	unsigned long i;
+
 	while (true)
 	{
 		std::cout << subject;
 		if (!std::getline(std::cin, infos))
 			return "";
-		unsigned long i = 0;
+		i = 0;
 		while (i < infos.size() && (infos[i] == 32 || (infos[i] > 9 && infos[i] < 13)))
 			i++;	
 		if (i == infos.size())
@@ -20,6 +22,41 @@ static std::string getContactsInfos(std::string infos, std::string subject)
 	return infos;
 }
 
+static std::string getNumber(std::string number, std::string text)
+{
+	bool digit;
+	unsigned long i;
+
+	digit = 1;
+	while(digit)
+	{
+		std::cout << text;
+		if (!(std::getline(std::cin, number)))
+			return "";
+		i = 0;
+		while (i < number.size() && (number[i] == 32 || (number[i] > 9 && number[i] < 13)))
+			i++;	
+		if (number.empty() || i == number.size())
+		{
+			std::cout << "No space..." << std::endl;
+			continue;
+		}
+		i = -1;
+		while(number[++i])
+		{
+			if (!std::isdigit(static_cast<unsigned char>(number[i])))
+			{
+				std::cout << "Only numbers are acceptable..." << std::endl;
+				digit = 1;
+				break;
+			}
+			else
+				digit = 0;
+		}
+	}
+	return number;
+}
+
 std::string longInfosDisplay(std::string str)
 {
 	if (str.length() > 10)
@@ -27,7 +64,13 @@ std::string longInfosDisplay(std::string str)
 	else
 		return str;
 }
-
+void addTableText(std::string text)
+{
+	if (text.empty())
+		std::cout << "|" << std::endl;
+	else
+		std::cout << "|" << std::setw(10) << text;
+}
 int PhoneBook::addContact(int newPerson)
 {
 	std::string newFirstName;
@@ -35,8 +78,6 @@ int PhoneBook::addContact(int newPerson)
 	std::string newNickName;
 	std::string newPhoneNumber;
 	std::string newDarkestSecret;
-	int i;
-	bool digit;
 
 	newFirstName = getContactsInfos(newFirstName, "First Name     :");
 	if (newFirstName.empty())
@@ -47,26 +88,7 @@ int PhoneBook::addContact(int newPerson)
 	newNickName = getContactsInfos(newNickName, "Nickname       :");
 	if (newNickName.empty())
 		return 1;
-
-	digit = true;
-	while(digit)
-	{
-		std::cout << "Phonenumber    : ";
-		if (!(std::getline(std::cin, newPhoneNumber)))
-			return 1;
-		i = -1;
-		while(newPhoneNumber[++i])
-		{
-			if (!std::isdigit(static_cast<unsigned char>(newPhoneNumber[i])))
-			{
-				std::cout << "Only numbers are acceptable..." << std::endl;
-				digit = 1;
-				break;
-			}
-			else
-				digit = 0;
-		}
-	}
+	newPhoneNumber = getNumber(newPhoneNumber, "Phonenumber    : ");
 	if (newPhoneNumber.empty())
 		return 1;
 	newDarkestSecret = getContactsInfos(newDarkestSecret, "Darkest Secret :");
@@ -80,30 +102,33 @@ int PhoneBook::addContact(int newPerson)
 	return 0;
 }
 
-void PhoneBook::getPhoneBook()
+int PhoneBook::getPhoneBook()
 {
 	std::string personID;
 	int id;
 
-	std::cout << "|" << std::setw(10) << "INDEX"
-			<< "|" << std::setw(10) << "FIRSTNAME"
-			<< "|" << std::setw(10)	<< "LASTNAME"
-			<< "|" << std::setw(10) << "NICKNAME"
-			<< "|" << std::endl;
+	addTableText("INDEX");
+	addTableText("FIRSTNAME");
+	addTableText("LASTNAME");
+	addTableText("NICKNAME");
+	addTableText("");
 	for (size_t i = 0; i < 8; i++)
 	{
 		if (people[i].getFirstName() != "")
-			std::cout << "|" << std::setw(10) << i + 1
-					<< "|" << std::setw(10) << longInfosDisplay(people[i].getFirstName())
-					<< "|" << std::setw(10) << longInfosDisplay(people[i].getLastName())
-					<< "|" << std::setw(10) << longInfosDisplay(people[i].getNickName())
-					<< "|" << std::endl;
+		{
+			std::cout << "|" << std::setw(10) << i + 1;
+			addTableText(longInfosDisplay(people[i].getFirstName()));
+			addTableText(longInfosDisplay(people[i].getLastName()));
+			addTableText(longInfosDisplay(people[i].getNickName()));
+			addTableText("");
+		}
 	}
 	id = 0;
 	while (1)
 	{
-		if (!std::getline(std::cin, personID))
-			return ;
+		personID = getNumber(personID, "Indis: ");
+		if (personID.empty())
+			return 1;
 		id = std::atoi(personID.c_str());
 		if (id < 1 || id > 8)
 			std::cout << "Wrong id value. Please enter 1-8..." << std::endl;
@@ -120,4 +145,5 @@ void PhoneBook::getPhoneBook()
 		std::cout << id << ". Nickname    :" << people[id - 1].getNickName() << std::endl;
 	if (people[id - 1].getPhoneNumber() != "")
 		std::cout << id << ". Phonenumber :"<< people[id - 1].getPhoneNumber() << std::endl;
+	return 0;
 }
