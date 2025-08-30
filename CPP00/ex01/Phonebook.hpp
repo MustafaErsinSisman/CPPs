@@ -4,7 +4,6 @@
 #include "Contact.hpp"
 #include <iomanip>
 #include <string>
-#include <iostream>
 
 class PhoneBook {
 private:
@@ -20,6 +19,7 @@ private:
     bool isSpace(const std::string& prompt);
 
 public:
+    PhoneBook();
     void addContact();
     void searchContact();
     void displayAllContacts();

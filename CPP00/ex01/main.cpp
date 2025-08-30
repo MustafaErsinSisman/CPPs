@@ -13,7 +13,7 @@ int main() {
     PhoneBook phonebook;
     std::string cmd;
     
-    std::cout << "=== PHONE BOOK ===" << std::endl;
+    std::cout << "======= PHONE BOOK =======" << std::endl;
     
     while (true) {
         std::cout << "\nOPTIONS      : ADD, SEARCH, EXIT" << std::endl;

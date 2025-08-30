@@ -1,5 +1,7 @@
 #include "Phonebook.hpp"
 
+PhoneBook::PhoneBook() : index(0) {}
+
 std::string PhoneBook::getInput(const std::string& prompt)
 {
     std::string input;
@@ -34,7 +36,7 @@ bool PhoneBook::isValidNumber(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)
 	{
-        if (!std::isdigit(str[i]) && isSpace(str))
+        if (!std::isdigit(str[i]) && !isSpace(str))
             return false;
     }
     return true;
@@ -80,7 +82,8 @@ void PhoneBook::displayTableHeader()
     std::cout << "|" << std::setw(10) << "INDEX"
               << "|" << std::setw(10) << "FIRST NAME"
               << "|" << std::setw(10) << "LAST NAME"
-              << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
+              << "|" << std::setw(10) << "NICKNAME"
+              << "|" << std::endl;
 }
 
 void PhoneBook::displayContactRow(int index)
@@ -114,15 +117,7 @@ void PhoneBook::searchContact()
 		if (!std::getline(std::cin, input))
 			return;
 		
-		//TODO daha iyi bir giriş şartı eklenmeli
-		if (!(input == "1" ||
-			input == "2" ||
-			input == "3" ||
-			input == "4" ||
-			input == "5" ||
-			input == "6" ||
-			input == "7" ||
-			input == "8"))
+        if (input.length() != 1 || (input[0] < '1' || input[0] > '8'))
 			std::cout << "Invalid index! (must be between 1-8)" << std::endl;
 		else
 			break ;
@@ -140,10 +135,9 @@ void PhoneBook::searchContact()
     std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
     std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
     std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
-    std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl; //? darkest secret bilgilerde yazacak mı ekrana
+    std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
 }
 
-//TODO başlardaki ve sonlardaki  boşluklar  silinebilir
 bool PhoneBook::isSpace(const std::string& prompt)
 {
     int i;
