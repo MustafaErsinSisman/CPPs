@@ -1,149 +1,159 @@
 #include "Phonebook.hpp"
 
-static std::string getContactsInfos(std::string infos, std::string subject)
+std::string PhoneBook::getInput(const std::string& prompt)
 {
-	unsigned long i;
-
-	while (true)
+    std::string input;
+    
+    while (true)
 	{
-		std::cout << subject;
-		if (!std::getline(std::cin, infos))
-			return "";
-		i = 0;
-		while (i < infos.size() && (infos[i] == 32 || (infos[i] > 9 && infos[i] < 13)))
-			i++;	
-		if (i == infos.size())
-		{
-			std::cout << "No space..." << std::endl;
-			continue;
-		}
-		return infos;
-	}
-	return infos;
+        std::cout << prompt;
+        if (!std::getline(std::cin, input))
+            return "";
+        if (!input.empty() && !isSpace(input))
+            return input;
+        std::cout << "This field cannot be left blank!" << std::endl;
+    }
 }
 
-static std::string getNumber(std::string number, std::string text)
+std::string PhoneBook::getPhoneInput(const std::string& prompt)
 {
-	bool digit;
-	unsigned long i;
-
-	digit = 1;
-	while(digit)
+    std::string input;
+    
+    while (true)
 	{
-		std::cout << text;
-		if (!(std::getline(std::cin, number)))
-			return "";
-		i = 0;
-		while (i < number.size() && (number[i] == 32 || (number[i] > 9 && number[i] < 13)))
-			i++;	
-		if (number.empty() || i == number.size())
-		{
-			std::cout << "No space..." << std::endl;
-			continue;
-		}
-		i = -1;
-		while(number[++i])
-		{
-			if (!std::isdigit(static_cast<unsigned char>(number[i])))
-			{
-				std::cout << "Only numbers are acceptable..." << std::endl;
-				digit = 1;
-				break;
-			}
-			else
-				digit = 0;
-		}
-	}
-	return number;
+        input = getInput(prompt);
+        if (input.empty())
+            return "";
+        if (isValidNumber(input))
+            return input;
+        std::cout << "You can only enter numbers!" << std::endl;
+    }
 }
 
-std::string longInfosDisplay(std::string str)
+bool PhoneBook::isValidNumber(const std::string& str)
 {
-	if (str.length() > 10)
-		return str.substr(0, 9) + ".";
-	else
-		return str;
-}
-void addTableText(std::string text)
-{
-	if (text.empty())
-		std::cout << "|" << std::endl;
-	else
-		std::cout << "|" << std::setw(10) << text;
-}
-int PhoneBook::addContact(int newPerson)
-{
-	std::string newFirstName;
-	std::string newLastName;
-	std::string newNickName;
-	std::string newPhoneNumber;
-	std::string newDarkestSecret;
-
-	newFirstName = getContactsInfos(newFirstName, "First Name     :");
-	if (newFirstName.empty())
-		return 1;
-	newLastName = getContactsInfos(newLastName, "Last Name      :");
-	if (newLastName.empty())
-		return 1;
-	newNickName = getContactsInfos(newNickName, "Nickname       :");
-	if (newNickName.empty())
-		return 1;
-	newPhoneNumber = getNumber(newPhoneNumber, "Phonenumber    : ");
-	if (newPhoneNumber.empty())
-		return 1;
-	newDarkestSecret = getContactsInfos(newDarkestSecret, "Darkest Secret :");
-	if (newDarkestSecret.empty())
-		return 1;
-	people[newPerson].setFirstName(newFirstName);
-	people[newPerson].setLastName(newLastName);	
-	people[newPerson].setNickName(newNickName);
-	people[newPerson].setPhoneNumber(newPhoneNumber);
-	people[newPerson].setDarkestSecret(newDarkestSecret);
-	return 0;
-}
-
-int PhoneBook::getPhoneBook()
-{
-	std::string personID;
-	int id;
-
-	addTableText("INDEX");
-	addTableText("FIRSTNAME");
-	addTableText("LASTNAME");
-	addTableText("NICKNAME");
-	addTableText("");
-	for (size_t i = 0; i < 8; i++)
+    for (size_t i = 0; i < str.length(); i++)
 	{
-		if (people[i].getFirstName() != "")
-		{
-			std::cout << "|" << std::setw(10) << i + 1;
-			addTableText(longInfosDisplay(people[i].getFirstName()));
-			addTableText(longInfosDisplay(people[i].getLastName()));
-			addTableText(longInfosDisplay(people[i].getNickName()));
-			addTableText("");
-		}
-	}
-	id = 0;
-	while (1)
+        if (!std::isdigit(str[i]) && isSpace(str))
+            return false;
+    }
+    return true;
+}
+
+std::string PhoneBook::truncateString(const std::string& str)
+{
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    return str;
+}
+
+void PhoneBook::addContact()
+{
+    std::string firstName = getInput("First Name: ");
+    if (firstName.empty()) return;
+    
+    std::string lastName = getInput("Last Name: ");
+    if (lastName.empty()) return;
+    
+    std::string nickName = getInput("Nickname: ");
+    if (nickName.empty()) return;
+    
+    std::string phoneNumber = getPhoneInput("Phone Number: ");
+    if (phoneNumber.empty()) return;
+    
+    std::string darkestSecret = getInput("Darkest Secret: ");
+    if (darkestSecret.empty()) return;
+    
+    contacts[index].setFirstName(firstName);
+    contacts[index].setLastName(lastName);
+    contacts[index].setNickName(nickName);
+    contacts[index].setPhoneNumber(phoneNumber);
+    contacts[index].setDarkestSecret(darkestSecret);
+    
+    std::cout << "Contact successfully added!" << std::endl;
+    
+    index = (index + 1) % 8;
+}
+
+void PhoneBook::displayTableHeader()
+{
+    std::cout << "|" << std::setw(10) << "INDEX"
+              << "|" << std::setw(10) << "FIRST NAME"
+              << "|" << std::setw(10) << "LAST NAME"
+              << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
+}
+
+void PhoneBook::displayContactRow(int index)
+{
+    if (contacts[index].isEmpty())
+        return;
+    
+    std::cout << "|" << std::setw(10) << (index + 1)
+              << "|" << std::setw(10) << truncateString(contacts[index].getFirstName())
+              << "|" << std::setw(10) << truncateString(contacts[index].getLastName())
+              << "|" << std::setw(10) << truncateString(contacts[index].getNickName())
+              << "|" << std::endl;
+}
+
+void PhoneBook::displayAllContacts()
+{
+    displayTableHeader();
+    
+    for (int i = 0; i < 8; i++)
+        displayContactRow(i);
+}
+
+void PhoneBook::searchContact()
+{
+    std::string input;
+        
+	displayAllContacts();
+	while(true)
 	{
-		personID = getNumber(personID, "Indis: ");
-		if (personID.empty())
-			return 1;
-		id = std::atoi(personID.c_str());
-		if (id < 1 || id > 8)
-			std::cout << "Wrong id value. Please enter 1-8..." << std::endl;
+		std::cout << "\nEnter the index of the contact you want to see (1-8): ";
+		if (!std::getline(std::cin, input))
+			return;
+		
+		//TODO daha iyi bir giriş şartı eklenmeli
+		if (!(input == "1" ||
+			input == "2" ||
+			input == "3" ||
+			input == "4" ||
+			input == "5" ||
+			input == "6" ||
+			input == "7" ||
+			input == "8"))
+			std::cout << "Invalid index! (must be between 1-8)" << std::endl;
 		else
-			break;
+			break ;
 	}
-	if (people[id - 1].getFirstName() != "")
-		std::cout << id << ". First Name  :" << people[id - 1].getFirstName() << std::endl;
-	else
-		std::cout << "Not listed in the phone book" << std::endl;
-	if (people[id - 1].getLastName() != "")
-		std::cout << id << ". Last Name   :" << people[id - 1].getLastName() << std::endl;
-	if (people[id - 1].getNickName() != "")
-		std::cout << id << ". Nickname    :" << people[id - 1].getNickName() << std::endl;
-	if (people[id - 1].getPhoneNumber() != "")
-		std::cout << id << ". Phonenumber :"<< people[id - 1].getPhoneNumber() << std::endl;
-	return 0;
+		
+    int index = input[0] - '1';
+    
+    if (contacts[index].isEmpty())
+	{
+        std::cout << "No contact found in this index!" << std::endl;
+        return ;
+    }
+    
+    std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
+    std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
+    std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
+    std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl; //? darkest secret bilgilerde yazacak mı ekrana
+}
+
+//TODO başlardaki ve sonlardaki  boşluklar  silinebilir
+bool PhoneBook::isSpace(const std::string& prompt)
+{
+    int i;
+    int status;
+
+    i = 0;
+    status = 0;
+    while (std::isspace(prompt[i]))
+		i++;
+	if (!prompt[i])
+		status = 1;
+	return status;
 }

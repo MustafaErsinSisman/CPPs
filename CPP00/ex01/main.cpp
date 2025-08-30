@@ -2,51 +2,44 @@
 	//TODO namespace nedir detaylı öğren 
 	//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
 	//TODO ve :: operatörü nasıl çalışıyor öğren
-	// constructor daha detaylı öğren
+	//TODO std methodlarını  öğren mesela getline cout cin
 
-	// TODO copy constructer öğren
-		// PhoneBook(const PhoneBook & copy); // const olmalı mı
-	
-	//TODO destructor öğren
-	// operator overloading daha detaylı öğren
-	
+    //TODO string nasıl işliyor ve methodlarını öğren
+    //TODO operator overloading öğren
 	//TODO classlarda PhoneBook::PhoneBook() : phoneNumber(0) {} // : kullanımı nasıl çalışıyor öğren
 #include "Phonebook.hpp"
 
-int	main(void)
-{
-	std::string cmd;
-	int personID;
-	PhoneBook phonebook;
-	
-	personID = 0;
-	do
-	{
-		if (personID == 8)
-			personID = 0;
-		std::cout << "ADD SEARCH EXIT" << std::endl;
-		if (!(std::getline(std::cin, cmd)))
-			break;
-		if (cmd == "ADD")
-		{
-			if (phonebook.addContact(personID++ % 8))
-			{
-				std::cout << std::endl;
-				break;
-			}
-		}
-		else if (cmd == "SEARCH")
-		{
-			if (phonebook.getPhoneBook())
-			{
-				std::cout << std::endl;
-				break;
-			}
-		}
-		else if (cmd == "EXIT")
-			break;
-		else
-			std::cout << "No this option..." <<  std::endl;
-	}while (1);
-	return (0);
+int main() {
+    PhoneBook phonebook;
+    std::string cmd;
+    
+    std::cout << "=== PHONE BOOK ===" << std::endl;
+    
+    while (true) {
+        std::cout << "\nOPTIONS      : ADD, SEARCH, EXIT" << std::endl;
+        std::cout << "Enter option : ";
+        
+        if (!std::getline(std::cin, cmd))
+        {
+            std::cout << std::endl;
+            break;
+        }
+		
+        //TODO daha iyi bir giriş şartı eklenmeli
+        if (cmd == "ADD") {
+            phonebook.addContact();
+        }
+        else if (cmd == "SEARCH") {
+            phonebook.searchContact();
+        }
+        else if (cmd == "EXIT") {
+            std::cout << "Exiting..." << std::endl;
+            break;
+        }
+        else {
+            std::cout << "\nThere is no such option among the options..." << std::endl;
+        }
+    }
+    
+    return 0;
 }
