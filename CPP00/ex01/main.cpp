@@ -9,37 +9,31 @@
 	//TODO classlarda PhoneBook::PhoneBook() : phoneNumber(0) {} // : kullanımı nasıl çalışıyor öğren
 #include "Phonebook.hpp"
 
-int main() {
+int main()
+{
     PhoneBook phonebook;
     std::string cmd;
-    
-    std::cout << "======= PHONE BOOK =======" << std::endl;
-    
+
+    std::cout << "======= PHONE BOOK =======" << std::endl;    
     while (true) {
         std::cout << "\nOPTIONS      : ADD, SEARCH, EXIT" << std::endl;
         std::cout << "Enter option : ";
-        
         if (!std::getline(std::cin, cmd))
         {
             std::cout << std::endl;
             break;
         }
-		
-        //TODO daha iyi bir giriş şartı eklenmeli
-        if (cmd == "ADD") {
+        if (cmd == "ADD")
             phonebook.addContact();
-        }
-        else if (cmd == "SEARCH") {
+        else if (cmd == "SEARCH")
             phonebook.searchContact();
-        }
-        else if (cmd == "EXIT") {
+        else if (cmd == "EXIT")
+        {
             std::cout << "Exiting..." << std::endl;
             break;
         }
-        else {
+        else
             std::cout << "\nThere is no such option among the options..." << std::endl;
-        }
     }
-    
     return 0;
 }
