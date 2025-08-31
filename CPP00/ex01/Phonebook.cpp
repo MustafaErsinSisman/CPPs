@@ -2,6 +2,37 @@
 
 PhoneBook::PhoneBook() : index(0) {}
 
+bool PhoneBook::isSpace(const std::string& prompt)
+{
+    int i;
+    int status;
+
+    i = 0;
+    status = 0;
+    while (std::isspace(prompt[i]))
+		i++;
+	if (!prompt[i])
+		status = 1;
+	return status;
+}
+
+bool PhoneBook::isValidNumber(const std::string& str)
+{
+    for (size_t i = 0; i < str.length(); i++)
+	{
+        if (!std::isdigit(str[i]) && !isSpace(str))
+            return false;
+    }
+    return true;
+}
+
+std::string PhoneBook::truncateString(const std::string& str)
+{
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    return str;
+}
+
 std::string PhoneBook::getInput(const std::string& prompt)
 {
     std::string input;
@@ -32,25 +63,9 @@ std::string PhoneBook::getPhoneInput(const std::string& prompt)
     }
 }
 
-bool PhoneBook::isValidNumber(const std::string& str)
-{
-    for (size_t i = 0; i < str.length(); i++)
-	{
-        if (!std::isdigit(str[i]) && !isSpace(str))
-            return false;
-    }
-    return true;
-}
-
-std::string PhoneBook::truncateString(const std::string& str)
-{
-    if (str.length() > 10)
-        return str.substr(0, 9) + ".";
-    return str;
-}
-
 void PhoneBook::addContact()
 {
+    std::cout << std::endl;
     std::string firstName = getInput("First Name: ");
     if (firstName.empty()) return;
     std::string lastName = getInput("Last Name: ");
@@ -67,17 +82,18 @@ void PhoneBook::addContact()
     contacts[index].setNickName(nickName);
     contacts[index].setPhoneNumber(phoneNumber);
     contacts[index].setDarkestSecret(darkestSecret);
-    std::cout << "Contact successfully added!" << std::endl;    
+    std::cout << "\nContact successfully added!" << std::endl;    
     index = (index + 1) % 8;
 }
 
 void PhoneBook::displayTableHeader()
 {
-    std::cout << "|" << std::setw(10) << "INDEX"
-              << "|" << std::setw(10) << "FIRST NAME"
-              << "|" << std::setw(10) << "LAST NAME"
-              << "|" << std::setw(10) << "NICKNAME"
-              << "|" << std::endl;
+    std::cout << std::endl 
+                << "|" << std::setw(10) << "INDEX"
+                << "|" << std::setw(10) << "FIRST NAME"
+                << "|" << std::setw(10) << "LAST NAME"
+                << "|" << std::setw(10) << "NICKNAME"
+                << "|" << std::endl;
 }
 
 void PhoneBook::displayContactRow(int index)
@@ -85,10 +101,10 @@ void PhoneBook::displayContactRow(int index)
     if (contacts[index].isEmpty())
         return;
     std::cout << "|" << std::setw(10) << (index + 1)
-              << "|" << std::setw(10) << truncateString(contacts[index].getFirstName())
-              << "|" << std::setw(10) << truncateString(contacts[index].getLastName())
-              << "|" << std::setw(10) << truncateString(contacts[index].getNickName())
-              << "|" << std::endl;
+                << "|" << std::setw(10) << truncateString(contacts[index].getFirstName())
+                << "|" << std::setw(10) << truncateString(contacts[index].getLastName())
+                << "|" << std::setw(10) << truncateString(contacts[index].getNickName())
+                << "|" << std::endl;
 }
 
 void PhoneBook::displayAllContacts()
@@ -118,26 +134,13 @@ void PhoneBook::searchContact()
     index = input[0] - '1';
     if (contacts[index].isEmpty())
 	{
-        std::cout << "No contact found in this index!" << std::endl;
+        std::cout << "\nNo contact found in this index!" << std::endl;
         return ;
     }
-    std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
+    std::cout << "\nFirst Name: " << contacts[index].getFirstName() << std::endl;
     std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
     std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
     std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
     std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
 }
 
-bool PhoneBook::isSpace(const std::string& prompt)
-{
-    int i;
-    int status;
-
-    i = 0;
-    status = 0;
-    while (std::isspace(prompt[i]))
-		i++;
-	if (!prompt[i])
-		status = 1;
-	return status;
-}

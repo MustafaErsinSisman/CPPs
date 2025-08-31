@@ -10,19 +10,21 @@ private:
     Contact contacts[8];
     int index;
     
+    bool isSpace(const std::string& prompt);
+    bool isValidNumber(const std::string& str);
+    std::string truncateString(const std::string& str);
+
     std::string getInput(const std::string& prompt);
     std::string getPhoneInput(const std::string& prompt);
-    std::string truncateString(const std::string& str);
+
     void displayTableHeader();
     void displayContactRow(int index);
-    bool isValidNumber(const std::string& str);
-    bool isSpace(const std::string& prompt);
+    void displayAllContacts();
 
 public:
     PhoneBook();
     void addContact();
     void searchContact();
-    void displayAllContacts();
 };
 
 #endif

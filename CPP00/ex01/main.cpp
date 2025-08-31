@@ -1,12 +1,3 @@
-
-	//TODO namespace nedir detaylı öğren 
-	//TODO ve neden kullanmayıp :: opertörünü kullanıyoruz 
-	//TODO ve :: operatörü nasıl çalışıyor öğren
-	//TODO std methodlarını  öğren mesela getline cout cin
-
-    //TODO string nasıl işliyor ve methodlarını öğren
-    //TODO operator overloading öğren
-	//TODO classlarda PhoneBook::PhoneBook() : phoneNumber(0) {} // : kullanımı nasıl çalışıyor öğren
 #include "Phonebook.hpp"
 
 int main()
