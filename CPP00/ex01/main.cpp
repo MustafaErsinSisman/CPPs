@@ -15,9 +15,21 @@ int main()
             break;
         }
         if (cmd == "ADD")
-            phonebook.addContact();
+        {
+            if (phonebook.addContact())
+            {
+                std::cout << std::endl;
+                break;
+            }
+        }
         else if (cmd == "SEARCH")
-            phonebook.searchContact();
+        {
+            if (phonebook.searchContact())
+            {
+                std::cout << std::endl;
+                break;
+            }
+        }
         else if (cmd == "EXIT")
         {
             std::cout << "Exiting..." << std::endl;

@@ -23,8 +23,8 @@ private:
 
 public:
     PhoneBook();
-    void addContact();
-    void searchContact();
+    int addContact();
+    int searchContact();
 };
 
 #endif
