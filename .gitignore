@@ -4,11 +4,12 @@
 CPP00/ex00/megaphone
 CPP00/ex01/phonebook
 CPP01/ex00/zombie
-CPP01/ex01/zombie
+CPP01/ex01/zombie_horde
 CPP01/ex02/brain
 CPP01/ex03/weapon
 CPP01/ex04/sed
 CPP01/ex05/harl
+CPP01/ex06/harl_filter
 
 # Geçici dosyalar
 *~
