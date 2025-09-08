@@ -38,7 +38,6 @@ void	Harl::complain(std::string level)
 			(this->*funcitons[0])();
 		case 1:
 			(this->*funcitons[1])();
-
 		case 2:
 			(this->*funcitons[2])();
 		case 3:
