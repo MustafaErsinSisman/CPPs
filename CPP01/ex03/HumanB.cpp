@@ -4,7 +4,15 @@ HumanB::HumanB(std::string name) : name(name){};
 
 void	HumanB::attack()
 {
-	std::cout << GREEN << name << YELLOW << " attacks with their " << RED << weapon->getType() << RESET << std::endl;
+	if (weapon)
+		std::cout << GREEN << name << YELLOW << " attacks with their " << RED << weapon->getType() << RESET << std::endl;
+	else
+		std::cout << GREEN << name << RED << " has no weapon " << RESET << std::endl;
+}
+
+void	HumanB::setWeapon()
+{
+	weapon = NULL;
 }
 
 void	HumanB::setWeapon(Weapon& newWeapon)

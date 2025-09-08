@@ -18,6 +18,11 @@ int main()
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
+		HumanB tim("Tim");
+		tim.setWeapon();
+		tim.attack();
+		club.setType("some other type of club");
+		tim.attack();
 	}
 	return 0;
 }

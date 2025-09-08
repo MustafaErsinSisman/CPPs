@@ -15,6 +15,7 @@ class HumanB
 	public:
 		HumanB(std::string name);
 		void	attack();
+		void	setWeapon();
 		void	setWeapon(Weapon& newWeapon);
 	private:
 		std::string name;
