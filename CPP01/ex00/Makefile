@@ -16,9 +16,9 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-run:
+run:all
 	@./${NAME}
-leak:
+leak:all
 	valgrind --leak-check=full --show-leak-kinds=all ./${NAME}
 
 re: fclean all

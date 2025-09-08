@@ -7,16 +7,16 @@ int	main(void)
 	heapZombie->announce();
 	delete heapZombie;
 	heapZombie = NULL;
-	
-	Zombie stackZombie("Mustafa");
-	
-
-	stackZombie.announce();
-	randomChump("Yusuf");
 
 	heapZombie = newZombie("Deneme");
 	heapZombie->announce();
 	delete heapZombie;
 	heapZombie = NULL;
+	
+	randomChump("Yusuf");
+	
+	Zombie stackZombie("Mustafa");
+	
+	stackZombie.announce();
 	return 0;
 }
