@@ -1,7 +1,8 @@
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
 # include <iostream>
+# include "Weapon.hpp"
 
 #define RED     "\033[1;31m"
 #define GREEN   "\033[1;32m"
@@ -9,16 +10,15 @@
 #define BLUE    "\033[1;34m"
 #define RESET   "\033[0m"
 
-class	Zombie
+class HumanB
 {
 	public:
-		void	announce(void);
-		void	setName(std::string name);
-		~Zombie();
+		HumanB(std::string name);
+		void	attack();
+		void	setWeapon(Weapon& newWeapon);
 	private:
 		std::string name;
+		Weapon* weapon;
 };
-
-Zombie*	zombieHorde( int N, std::string name );
 
 #endif

@@ -1,7 +1,7 @@
-NAME        = brain
+NAME        = weapon
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
-SRCS        = main.cpp
+SRCS        = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS        = $(SRCS:.cpp=.o)
 RM          = rm -f
 
@@ -18,6 +18,8 @@ fclean: clean
 
 run:all
 	@./${NAME}
+leak:all
+	valgrind --leak-check=full --show-leak-kinds=all ./${NAME}
 
 re: fclean all
 
