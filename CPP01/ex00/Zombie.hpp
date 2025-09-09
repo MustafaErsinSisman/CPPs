@@ -2,7 +2,6 @@
 # define ZOMBIE_HPP
 
 # include <iostream>
-# include <iomanip>
 
 # define R	"\033[1;31m"
 # define G	"\033[1;32m"
@@ -13,6 +12,7 @@
 class Zombie
 {
 	public:
+		Zombie();
 		Zombie( std::string name );
 		~Zombie();
 

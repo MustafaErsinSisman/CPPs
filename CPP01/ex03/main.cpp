@@ -24,8 +24,6 @@ int main()
 		HumanB tim("Tim");
 
 		tim.attack();
-		club.setType("some other type of club");
-		tim.attack();
 	}
 	return 0;
 }

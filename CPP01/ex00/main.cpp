@@ -2,8 +2,8 @@
 
 int	main( void )
 {
-	Zombie	*heapZombie = newZombie("Ersin");
-	
+	Zombie	*heapZombie = new Zombie("Ersin");
+
 	heapZombie->announce();
 	delete heapZombie;
 	heapZombie = NULL;
@@ -16,6 +16,10 @@ int	main( void )
 	Zombie	stackZombie("Mustafa");
 	
 	stackZombie.announce();
+
+	Zombie	stackZombie2("Emre");
+	
+	stackZombie2.announce();
 
 	randomChump("Chump");
 	return 0;

@@ -15,20 +15,20 @@ int	main(int ac, char **av)
 		return 1;
 	}
 
-	std::ifstream file_in(av[1]);
+	std::ifstream in_file(av[1]);
 
-	if (!file_in.is_open())
+	if (!in_file.is_open())
 	{
-		std::cout << R << "File not opened." << W << std::endl;
+		std::cout << R << "File: " << av[1] << " is not opened." << W << std::endl;
 		return 1;
 	}
 
 	std::string out_file_name = std::string(av[1]) + ".replace";
-	std::ofstream file_out(out_file_name.c_str());
+	std::ofstream out_file(out_file_name.c_str());
 
-	if (!file_out.is_open())
+	if (!out_file.is_open())
 	{
-		std::cout << R << "Output file not opened." << W << std::endl;
+		std::cout << R << av[1] << "File: " <<".replace is not opened." << W << std::endl;
 		return 1;
 	}
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	std::string change = av[2];
 	std::string replace = av[3];
 
-	while (std::getline(file_in, line))
+	while (std::getline(in_file, line))
 	{
 		size_t i = 0;
 		while (i < line.size())
@@ -44,18 +44,18 @@ int	main(int ac, char **av)
 			if (i + change.size() <= line.size() &&
 				line.substr(i, change.size()) == change)
 			{
-				file_out << replace;
+				out_file << replace;
 				i += change.size();
 			}
 			else
 			{
-				file_out << line[i];
+				out_file << line[i];
 				i++;
 			}
 		}
-		file_out << '\n';
+		out_file << '\n';
 	}
-	file_in.close();
-	file_out.close();
+	in_file.close();
+	out_file.close();
 	return 0;
 }
