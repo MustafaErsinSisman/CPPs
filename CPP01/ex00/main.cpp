@@ -1,22 +1,22 @@
 #include "Zombie.hpp"
 
-int	main(void)
+int	main( void )
 {
-	Zombie *heapZombie = newZombie("Ersin");
+	Zombie	*heapZombie = newZombie("Ersin");
 	
 	heapZombie->announce();
 	delete heapZombie;
 	heapZombie = NULL;
 
-	heapZombie = newZombie("Deneme");
+	heapZombie = newZombie("Ersin 2.0");
 	heapZombie->announce();
 	delete heapZombie;
 	heapZombie = NULL;
-	
-	randomChump("Yusuf");
-	
-	Zombie stackZombie("Mustafa");
+
+	Zombie	stackZombie("Mustafa");
 	
 	stackZombie.announce();
+
+	randomChump("Chump");
 	return 0;
 }

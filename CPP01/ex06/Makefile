@@ -1,9 +1,9 @@
-NAME        = harl_filter
-CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
-SRCS        = main.cpp Harl.cpp
-OBJS        = $(SRCS:.cpp=.o)
-RM          = rm -f
+NAME		= harl_filter
+CXX		= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+SRCS		= main.cpp Harl.cpp
+OBJS		= $(SRCS:.cpp=.o)
+RM		= rm -f
 
 all: $(NAME)
 

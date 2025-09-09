@@ -1,9 +1,9 @@
-NAME        = zombie_horde
-CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
-SRCS        = main.cpp Zombie.cpp zombieHorde.cpp
-OBJS        = $(SRCS:.cpp=.o)
-RM          = rm -f
+NAME		= zombie_horde
+CXX		= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+SRCS		= main.cpp Zombie.cpp zombieHorde.cpp
+OBJS		= $(SRCS:.cpp=.o)
+RM		= rm -f
 
 all: $(NAME)
 

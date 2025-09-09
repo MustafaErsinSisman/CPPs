@@ -13,6 +13,5 @@ int main(void)
 	harl.complain("ERROR");
 	std::cout << std::endl;
 	harl.complain("BLABLA");
-	
 	return 0;
 }
