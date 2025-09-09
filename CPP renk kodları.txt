@@ -1,0 +1,32 @@
+CPP temrminal renk kodları
+
+| Renk    | Kodu         | Açıklama            |
+| ------- | ------------ | ------------------- |
+| Siyah   | `\033[1;30m` | Parlak siyah (gray) |
+| Kırmızı | `\033[1;31m` | Parlak kırmızı      |
+| Yeşil   | `\033[1;32m` | Parlak yeşil        |
+| Sarı    | `\033[1;33m` | Parlak sarı         |
+| Mavi    | `\033[1;34m` | Parlak mavi         |
+| Magenta | `\033[1;35m` | Parlak magenta      |
+| Cyan    | `\033[1;36m` | Parlak cyan         |
+| Beyaz   | `\033[1;37m` | Parlak beyaz        |
+
+| Renk    | Kodu       | Açıklama          |
+| ------- | ---------- | ----------------- |
+| Siyah   | `\033[40m` | Siyah arka plan   |
+| Kırmızı | `\033[41m` | Kırmızı arka plan |
+| Yeşil   | `\033[42m` | Yeşil arka plan   |
+| Sarı    | `\033[43m` | Sarı arka plan    |
+| Mavi    | `\033[44m` | Mavi arka plan    |
+| Magenta | `\033[45m` | Magenta arka plan |
+| Cyan    | `\033[46m` | Cyan arka plan    |
+| Beyaz   | `\033[47m` | Beyaz arka plan   |
+
+| Stil                    | Kodu      | Açıklama                                       |
+| ----------------------- | --------- | ---------------------------------------------- |
+| Reset / Sıfırla         | `\033[0m` | Tüm renk ve stili sıfırlar                     |
+| Bold / Kalın            | `\033[1m` | Metni kalın yapar                              |
+| Underline / Altı çizili | `\033[4m` | Altı çizili metin                              |
+| Blink / Yanıp sönen     | `\033[5m` | Yanıp sönen metin (bazı terminaller destekler) |
+| Reverse / Ters          | `\033[7m` | Metin ve arka plan renklerini ters çevirir     |
+
