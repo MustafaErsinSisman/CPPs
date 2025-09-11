@@ -8,6 +8,12 @@ int	main(int ac, char **av)
 		return 1;
 	}
 
+	if (std::string(av[2]).empty() || std::string(av[3]).empty())
+	{
+		std::cout << R << "Empty parameters!" << W << std::endl;
+		return 1;
+	}
+
 	std::ifstream in_file(av[1]);
 
 	if (!in_file.is_open())
