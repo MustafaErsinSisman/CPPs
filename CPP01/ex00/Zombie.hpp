@@ -13,7 +13,7 @@ class Zombie
 {
 	public:
 		Zombie();
-		Zombie( std::string name );
+		Zombie( const std::string& name );
 		~Zombie();
 
 		void	announce( void );

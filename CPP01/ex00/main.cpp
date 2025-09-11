@@ -14,13 +14,10 @@ int	main( void )
 	heapZombie = NULL;
 
 	Zombie	stackZombie("Mustafa");
-	
-	stackZombie.announce();
-
 	Zombie	stackZombie2("Emre");
 	
-	stackZombie2.announce();
-
+	stackZombie.announce();
 	randomChump("Chump");
+	stackZombie2.announce();
 	return 0;
 }

@@ -17,9 +17,9 @@ int	main( void )
 			<< G << "stringPTR adress: "
 			<< Y << stringPTR << std::endl
 			<< G << "stringREF adress: "
-			<< Y << &stringREF << std::endl;
-	
-	std::cout	<< G << "\nbrain value: "
+			<< Y << &stringREF << std::endl
+
+			<< G << "\nbrain value: "
 			<< Y << brain << std::endl
 			<< G << "stringPTR value: "
 			<< Y << *stringPTR << std::endl

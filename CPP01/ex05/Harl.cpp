@@ -28,7 +28,6 @@ void	Harl::complain(std::string level)
 {
 	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	// member funtions pointerlarına daha detaylı bak
 	void		(Harl::*funcitons[])(void) = {&Harl::debug,
 							&Harl::info,
 							&Harl::warning,
@@ -42,6 +41,6 @@ void	Harl::complain(std::string level)
 			return;
 		}
 		if (i == 3)
-			std::cout << R << "There is no such option!" << W << std::endl;
+			std::cout << R << "[ Probably complaining about insignificant problems ]" << W << std::endl;
 	}
 }

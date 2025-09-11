@@ -1,6 +1,8 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string name) : name(name), weapon(NULL) {}
+HumanB::HumanB( const std::string& name) : weapon(NULL), name(name) {}
+
+void	HumanB::setWeapon( Weapon& newWeapon ) {weapon = &newWeapon;}
 
 void	HumanB::attack()
 {
@@ -14,6 +16,3 @@ void	HumanB::attack()
 				<< R	<< " has no weapon "
 				<< W	<< std::endl;
 }
-
-void	HumanB::setWeapon( Weapon& newWeapon ) {weapon = &newWeapon;}
-

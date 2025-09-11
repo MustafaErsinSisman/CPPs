@@ -52,7 +52,7 @@ void	Harl::complain(std::string level)
 			std::cout << std::endl;
 			break;
 		default:
-			std::cout << R << "There is no such option!" << W << std::endl;
+			std::cout << R << "[ Probably complaining about insignificant problems ]" << W << std::endl;
 			break;
 	}
 }

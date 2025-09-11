@@ -2,7 +2,7 @@
 
 Zombie::Zombie() : name("Unnamed") {}
 
-Zombie::Zombie( std::string name ) : name(name) {}
+Zombie::Zombie( const std::string& name ) : name(name) {}
 
 Zombie::~Zombie()
 {
