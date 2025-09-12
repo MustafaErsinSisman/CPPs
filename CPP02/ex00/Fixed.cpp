@@ -1,12 +1,18 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed( const int raw ) : raw(raw), bits(8)
+Fixed::Fixed()
+{
+	std::cout	<< Y << "Default constructor called"
+			<< W << std::endl;
+}
+
+Fixed::Fixed( const int raw ) : raw(raw)//, bits(8)
 {
 	std::cout	<< Y << "Default constructor called"
 			<< W << std::endl;	
 }
 
-Fixed::Fixed( const Fixed& copy ) : raw(copy.raw), bits(copy.bits)
+Fixed::Fixed( const Fixed& copy ) : raw(copy.raw)//, bits(copy.bits)
 {
 	std::cout	<< Y << "Copy constructor called"
 			<< W << std::endl;
@@ -20,7 +26,7 @@ Fixed&	Fixed::operator=( const Fixed& copy )
 	if (this != &copy)
 	{
 		raw = copy.raw;
-		bits = copy.bits;
+		// bits = copy.bits;
 	}
 
 	return (*this);

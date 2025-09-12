@@ -12,6 +12,7 @@
 class Fixed
 {
 	public:
+		Fixed();
 		Fixed( const int raw );
 		Fixed( const Fixed& copy );
 		Fixed&	operator=( const Fixed& copy );
