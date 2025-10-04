@@ -15,15 +15,12 @@ class Fixed
 {
 	public:
 		Fixed();
-		Fixed( const float value );
 		Fixed( const Fixed& copy );
 		Fixed&	operator=( const Fixed& copy );
 		~Fixed();
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
-		// float getFixedNumber( void ) const;
-		// void setFixedNumber( float const value );
 
 	private:
 		int			value;
