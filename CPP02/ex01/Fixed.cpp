@@ -12,7 +12,7 @@ Fixed::Fixed( const int value ) : value(value << bits)
 			<< W << std::endl;	
 }
 
-Fixed::Fixed( const float value ) : value((int)(value * (1 << bits) + 0.5f))
+Fixed::Fixed( const float value ) : value(roundf(value * (1 << bits)))
 {
 	std::cout	<< Y << "Float constructor called"
 			<< W << std::endl;	
@@ -22,7 +22,7 @@ Fixed::Fixed( const Fixed& copy )
 {
 	std::cout	<< Y << "Copy constructor called"
 			<< W << std::endl;
-	*this = copy;
+	*this = copy; // adress doğru mu yoksa sadece değişkenler mi eşitlenecek bak
 }
 
 Fixed&	Fixed::operator=( const Fixed& copy )
@@ -31,7 +31,7 @@ Fixed&	Fixed::operator=( const Fixed& copy )
 			<< W << std::endl;
 	if (this != &copy)
 		this->value = copy.value;
-	return (*this);
+	return *this;
 }
 
 Fixed::~Fixed()
@@ -40,7 +40,7 @@ Fixed::~Fixed()
 			<< W << std::endl;
 }
 
-float Fixed::toFloat( void ) const {return (float)(value) / (1 << bits);}
+float Fixed::toFloat( void ) const {return (float)(value) / (1 << bits);} // static cast bak
 
 int Fixed::toInt( void ) const {return value >> bits;}
 
