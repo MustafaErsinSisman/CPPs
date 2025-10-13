@@ -27,9 +27,7 @@ class Fixed
 
 	private:
 		int			value;
-		static const int	bits = 8; // const olunca class içinde değer verebiliyoruz
-						// ama const olmasaydı mutlaka dışarıda
-						// değer ataması yapmalıydık Fixed::bits = 8; gibi
+		static const int	bits = 8;
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);

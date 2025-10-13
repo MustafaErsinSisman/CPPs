@@ -40,7 +40,7 @@ Fixed::~Fixed()
 			<< W << std::endl;
 }
 
-float Fixed::toFloat( void ) const {return static_cast<float>(value) / (1 << bits);} // static cast bak
+float Fixed::toFloat( void ) const {return static_cast<float>(value) / (1 << bits);}
 
 int Fixed::toInt( void ) const {return value >> bits;}
 
