@@ -18,10 +18,11 @@ Fixed::Fixed( const float value ) : value(roundf(value * (1 << bits)))
 			<< W << std::endl;	
 }
 
-Fixed::Fixed( const Fixed& copy ) : value(copy.value)
+Fixed::Fixed( const Fixed& copy )
 {
 	std::cout	<< Y << "Copy constructor called"
 			<< W << std::endl;
+	*this = copy;
 }
 
 Fixed&	Fixed::operator=( const Fixed& copy )
