@@ -6,11 +6,10 @@ Fixed::Fixed() : value(0)
 			<< W << std::endl;
 }
 
-Fixed::Fixed( const Fixed& copy )
+Fixed::Fixed( const Fixed& copy ) : value(copy.getRawBits())
 {
 	std::cout	<< Y << "Copy constructor called"
 			<< W << std::endl;
-	*this = copy;
 }
 
 Fixed&	Fixed::operator=( const Fixed& copy )
