@@ -68,6 +68,10 @@ float Fixed::toFloat( void ) const {return static_cast<float>(value) / (1 << bit
 
 int Fixed::toInt( void ) const {return value >> bits;}
 
+static Fixed min( const Fixed& copy ) {} // TODO EKLE
+
+static Fixed max( const Fixed& copy ) {}
+
 std::ostream& operator<<(std::ostream& out, const Fixed& copy)
 {
 	out << copy.toFloat();
