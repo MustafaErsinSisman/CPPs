@@ -15,20 +15,52 @@ Fixed&	Fixed::operator=( const Fixed& copy )
 	return *this;
 }
 
-Fixed&	Fixed::operator+( const Fixed& copy ) {}
-Fixed&	Fixed::operator-( const Fixed& copy ) {}
-Fixed&	Fixed::operator*( const Fixed& copy ) {}
-Fixed&	Fixed::operator/( const Fixed& copy ) {}
-Fixed&	Fixed::operator<( const Fixed& copy ) {}
-Fixed&	Fixed::operator>( const Fixed& copy ) {}
-Fixed&	Fixed::operator<=( const Fixed& copy ) {}
-Fixed&	Fixed::operator>=( const Fixed& copy ) {}
-Fixed&	Fixed::operator==( const Fixed& copy ) {}
-Fixed&	Fixed::operator!=( const Fixed& copy ) {}
-Fixed&	Fixed::operator++( const Fixed& copy ) {}
-Fixed&	Fixed::operator--( const Fixed& copy ) {}
-Fixed&	Fixed::operator++( const Fixed& copy ) {}
-Fixed&	Fixed::operator--( const Fixed& copy ) {}
+Fixed Fixed::operator+(const Fixed& other) const {return Fixed(this->toFloat() + other.toFloat());}
+
+Fixed Fixed::operator-(const Fixed& other) const {return Fixed(this->toFloat() - other.toFloat());}
+
+Fixed Fixed::operator*(const Fixed& other) const {return Fixed(this->toFloat() * other.toFloat());}
+
+Fixed Fixed::operator/(const Fixed& other) const {return Fixed(this->toFloat() / other.toFloat());}
+
+bool Fixed::operator<(const Fixed& other) const {return this->value < other.value;}
+
+bool Fixed::operator>(const Fixed& other) const {return this->value > other.value;}
+
+bool Fixed::operator<=(const Fixed& other) const {return this->value <= other.value;}
+
+bool Fixed::operator>=(const Fixed& other) const {return this->value >= other.value;}
+
+bool Fixed::operator==(const Fixed& other) const {return this->value == other.value;}
+
+bool Fixed::operator!=(const Fixed& other) const {return this->value != other.value;}
+
+
+Fixed&	Fixed::operator++()
+{
+	this->value++;
+	return *this;
+}
+
+Fixed&	Fixed::operator--()
+{
+	this->value--;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed tmp(*this);
+    this->value++;
+    return tmp;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed tmp(*this);
+    this->value--;
+    return tmp;
+}
 
 Fixed::~Fixed() {}
 
