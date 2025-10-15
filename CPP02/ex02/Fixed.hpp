@@ -24,12 +24,12 @@ class Fixed
 		Fixed	operator-( const Fixed& other ) const;
 		Fixed	operator*( const Fixed& other ) const;
 		Fixed	operator/( const Fixed& other ) const;
-		bool Fixed::operator<(const Fixed& other) const;
-		bool Fixed::operator>(const Fixed& other) const;
-		bool Fixed::operator<=(const Fixed& other) const;
-		bool Fixed::operator>=(const Fixed& other) const;
-		bool Fixed::operator==(const Fixed& other) const;
-		bool Fixed::operator!=(const Fixed& other) const;
+		bool operator<(const Fixed& other) const;
+		bool operator>(const Fixed& other) const;
+		bool operator<=(const Fixed& other) const;
+		bool operator>=(const Fixed& other) const;
+		bool operator==(const Fixed& other) const;
+		bool operator!=(const Fixed& other) const;
 		Fixed&	operator++();
 		Fixed&	operator--();
 		Fixed	operator++( int );
