@@ -13,11 +13,16 @@ int main( void )
 	 		<< "b is " << b << std::endl
 	 		<< "c is " << c << std::endl
 	 		<< "d is " << d << std::endl
-
+			<< std::endl
 			<< "a is " << a.toInt() << " as integer" << std::endl
 	 		<< "b is " << b.toInt() << " as integer" << std::endl
 	 		<< "c is " << c.toInt() << " as integer" << std::endl
-	 		<< "d is " << d.toInt() << " as integer" << W << std::endl;
+	 		<< "d is " << d.toInt() << " as integer" << std::endl
+			<< std::endl
+			<< "a is " << a.toFloat() << " as float" << std::endl
+	 		<< "b is " << b.toFloat() << " as float" << std::endl
+	 		<< "c is " << c.toFloat() << " as float" << std::endl
+	 		<< "d is " << d.toFloat() << " as float" << W << std::endl;
 
 	return 0;
 }

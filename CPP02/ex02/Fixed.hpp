@@ -24,22 +24,25 @@ class Fixed
 		Fixed	operator-( const Fixed& other ) const;
 		Fixed	operator*( const Fixed& other ) const;
 		Fixed	operator/( const Fixed& other ) const;
-		bool operator<(const Fixed& other) const;
-		bool operator>(const Fixed& other) const;
-		bool operator<=(const Fixed& other) const;
-		bool operator>=(const Fixed& other) const;
-		bool operator==(const Fixed& other) const;
-		bool operator!=(const Fixed& other) const;
+		bool	operator<(const Fixed& other) const;
+		bool	operator>(const Fixed& other) const;
+		bool	operator<=(const Fixed& other) const;
+		bool	operator>=(const Fixed& other) const;
+		bool	operator==(const Fixed& other) const;
+		bool	operator!=(const Fixed& other) const;
 		Fixed&	operator++();
 		Fixed&	operator--();
 		Fixed	operator++( int );
 		Fixed	operator--( int );
 		~Fixed();
 
-		float toFloat( void ) const;
-		int toInt( void ) const;
-		static Fixed min( const Fixed& copy );
-		static Fixed max( const Fixed& copy );
+		float	toFloat( void ) const;
+		int	toInt( void ) const;
+
+		static Fixed	min( const Fixed& copy1, const Fixed& copy2 );
+		static Fixed	max( const Fixed& copy1, const Fixed& copy2 );
+		static Fixed	min( Fixed& copy1, Fixed& copy2 );
+		static Fixed	max( Fixed& copy1, Fixed& copy2 );
 
 	private:
 		int			value;
