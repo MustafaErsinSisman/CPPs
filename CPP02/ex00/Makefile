@@ -18,6 +18,7 @@ fclean: clean
 
 run:all
 	@./${NAME}
+
 leak:all
 	valgrind --leak-check=full --show-leak-kinds=all ./${NAME}
 
