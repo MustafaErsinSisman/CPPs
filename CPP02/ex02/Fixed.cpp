@@ -50,14 +50,16 @@ Fixed&	Fixed::operator--()
 
 Fixed	Fixed::operator++(int)
 {
-	Fixed tmp(*this);
+	Fixed	tmp(*this);
+
 	this->value++;
 	return tmp;
 }
 
 Fixed	Fixed::operator--(int)
 {
-	Fixed tmp(*this);
+	Fixed	tmp(*this);
+
 	this->value--;
 	return tmp;
 }
@@ -68,13 +70,13 @@ float	Fixed::toFloat( void ) const {return static_cast<float>(value) / (1 << bit
 
 int	Fixed::toInt( void ) const {return value >> bits;}
 
-Fixed	Fixed::min( const Fixed& copy1, const Fixed& copy2 ) {return (copy1 <= copy2) ? copy1 : copy2;}
+const Fixed&	Fixed::min( const Fixed& copy1, const Fixed& copy2 ) {return (copy1 <= copy2) ? copy1 : copy2;}
 
-Fixed	Fixed::max( const Fixed& copy1, const Fixed& copy2 ) {return (copy1 >= copy2) ? copy1 : copy2;}
+const Fixed&	Fixed::max( const Fixed& copy1, const Fixed& copy2 ) {return (copy1 >= copy2) ? copy1 : copy2;}
 
-Fixed	Fixed::min( Fixed& copy1, Fixed& copy2 ) {return (copy1 <= copy2) ? copy1 : copy2;}
+Fixed&	Fixed::min( Fixed& copy1, Fixed& copy2 ) {return (copy1 <= copy2) ? copy1 : copy2;}
 
-Fixed	Fixed::max( Fixed& copy1, Fixed& copy2 ) {return (copy1 >= copy2) ? copy1 : copy2;}
+Fixed&	Fixed::max( Fixed& copy1, Fixed& copy2 ) {return (copy1 >= copy2) ? copy1 : copy2;}
 
 int	Fixed::getRawBits( void ) const {return this->value;}
 

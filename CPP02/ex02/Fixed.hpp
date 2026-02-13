@@ -39,10 +39,10 @@ class Fixed
 		float	toFloat( void ) const;
 		int	toInt( void ) const;
 
-		static Fixed	min( const Fixed& copy1, const Fixed& copy2 );
-		static Fixed	max( const Fixed& copy1, const Fixed& copy2 );
-		static Fixed	min( Fixed& copy1, Fixed& copy2 );
-		static Fixed	max( Fixed& copy1, Fixed& copy2 );
+		static const Fixed&	min( const Fixed& copy1, const Fixed& copy2 );
+		static const Fixed&	max( const Fixed& copy1, const Fixed& copy2 );
+		static Fixed&	min( Fixed& copy1, Fixed& copy2 );
+		static Fixed&	max( Fixed& copy1, Fixed& copy2 );
 
 		int	getRawBits( void ) const;
 		void	setRawBits( int const raw );
