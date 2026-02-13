@@ -12,9 +12,9 @@ int main( void )
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
 
-	a.setRawBits(1344);
-	b.setRawBits(960);
-	c.setRawBits(324);
+	a.setRawBits( 1344 );
+	b.setRawBits( 960 );
+	c.setRawBits( 324 );
 
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;

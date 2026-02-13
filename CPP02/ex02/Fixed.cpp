@@ -76,6 +76,10 @@ Fixed	Fixed::min( Fixed& copy1, Fixed& copy2 ) {return (copy1 <= copy2) ? copy1 
 
 Fixed	Fixed::max( Fixed& copy1, Fixed& copy2 ) {return (copy1 >= copy2) ? copy1 : copy2;}
 
+int	Fixed::getRawBits( void ) const {return this->value;}
+
+void	Fixed::setRawBits( int const raw ) {this->value = raw;}
+
 std::ostream& operator<<(std::ostream& out, const Fixed& copy)
 {
 	out << copy.toFloat();

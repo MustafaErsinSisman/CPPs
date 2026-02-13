@@ -24,5 +24,12 @@ int main( void )
 	 		<< "c is " << c.toFloat() << " as float" << std::endl
 	 		<< "d is " << d.toFloat() << " as float" << W << std::endl;
 
+	Fixed	e;
+
+	std::cout << e.getRawBits() << std::endl;
+	e.setRawBits( 256 );
+	std::cout << e.getRawBits() << std::endl;
+	std::cout << e << std::endl;
+
 	return 0;
 }

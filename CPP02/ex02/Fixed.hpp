@@ -44,6 +44,8 @@ class Fixed
 		static Fixed	min( Fixed& copy1, Fixed& copy2 );
 		static Fixed	max( Fixed& copy1, Fixed& copy2 );
 
+		int	getRawBits( void ) const;
+		void	setRawBits( int const raw );
 	private:
 		int			value;
 		static const int	bits = 8;

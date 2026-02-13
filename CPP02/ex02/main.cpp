@@ -12,5 +12,6 @@ int main( void )
 			<< a << std::endl
 			<< b << std::endl
 			<< Fixed::max( a, b ) << std::endl;
+
 	return 0;
 }
