@@ -28,7 +28,7 @@ Fixed::~Fixed()
 			<< W << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+int	Fixed::getRawBits( void ) const
 {
 	std::cout	<< B << "getRawBits member function called"
 			<< W << std::endl;
@@ -36,7 +36,7 @@ int Fixed::getRawBits( void ) const
 }
 
 
-void Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits( int const raw )
 {
 	std::cout	<< B << "setRawBits member function called"
 			<< W << std::endl;

@@ -22,8 +22,8 @@ class Fixed
 		Fixed&	operator=( const Fixed& copy );
 		~Fixed();
 
-		float toFloat( void ) const;
-		int toInt( void ) const;
+		float	toFloat( void ) const;
+		int	toInt( void ) const;
 
 	private:
 		int			value;
