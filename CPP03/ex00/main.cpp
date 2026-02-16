@@ -8,10 +8,8 @@ int main(void)
 
 	a.attack("Tim");
 	for (size_t i = 0; i < 10; i++)
-	{
 		a.beRepaired(5);
-	}
-	b.takeDamage(10);
+	b.takeDamage(11);
 	b.beRepaired(10);
 	return 0;
 }

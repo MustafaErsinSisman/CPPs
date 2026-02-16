@@ -11,11 +11,8 @@ class ScavTrap : public ClapTrap
 		ScavTrap&	operator=(const ScavTrap& copy);
 		~ScavTrap();
 
-	private:
-		std::string	name;
-		unsigned int	hitPoints;
-		unsigned int	energyPoints;
-		unsigned int	attackDamage;
+		void attack(const std::string& target);
+		void guardGate();
 };
 
 #endif
