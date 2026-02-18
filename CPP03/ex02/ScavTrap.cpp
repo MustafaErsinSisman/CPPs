@@ -2,23 +2,27 @@
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
+	std::cout << G	<< "ScavTrap "
+			<< name
+			<< " default constructor called"
+			<< RST << std::endl;
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
-	std::cout << G	<< "ScavTrap " << name
-			<< " default constructor was executed"
-			<< RST << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
-	std::cout << B	<< "ScavTrap " << name
-			<< " copy constructor was executed"
+	std::cout << B	<< "ScavTrap "
+			<< name
+			<< " copy constructor called"
 			<< RST << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& copy)
 {
+	std::cout << Y	<< "ScavTrap copy assignment operator called"
+			<< RST << std::endl;
 	if (this != &copy)
 		ClapTrap::operator=(copy);
 	std::cout << Y	<< "ScavTrap " << name
@@ -29,8 +33,9 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& copy)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << R	<< "ScavTrap " << name
-			<< " destructor was executed"
+	std::cout << R	<< "ScavTrap "
+			<< name
+			<< " destructor called"
 			<< RST << std::endl;
 }
 
@@ -62,7 +67,8 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate()
 {
-	std::cout << MB	<< W << "ScavTrap " << name
-			<< " is guard gate."
+	std::cout << MB	<< W << "ScavTrap "
+			<< name
+			<< " is in Gate Keeper mode"
 			<< RST << std::endl;
 }

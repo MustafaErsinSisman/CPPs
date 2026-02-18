@@ -6,7 +6,9 @@ int main(void)
 	FragTrap	a("Bob");
 	ScavTrap	b("Tim");
 	FragTrap	c(a);
+	FragTrap	d("Jhon");
 
+	d = a;
 	a.attack("Tim");
 	b.attack("Bob");
 	for (size_t i = 0; i < 100; i++)
