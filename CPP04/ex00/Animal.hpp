@@ -29,8 +29,13 @@ class Animal
 		Animal();
 		Animal(const std::string& type);
 		Animal(const Animal& copy);
-		Animal&	operator=(const Animal& copy);
+		Animal&		operator=(const Animal& copy);
 		~Animal();
+
+		std::string	getType() const;
+		void		setType(const std::string& type);
+
+		void		makeSound();
 	protected:
 		std::string	type;
 };

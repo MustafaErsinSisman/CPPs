@@ -19,7 +19,7 @@ Animal::Animal(const Animal& copy)
 	*this = copy;
 }
 
-Animal& Animal::operator=(const Animal& copy)
+Animal&	Animal::operator=(const Animal& copy)
 {
 	std::cout << Y	<< "Animal copy assignment operator called"
 			<< RST << std::endl;
@@ -32,4 +32,22 @@ Animal::~Animal()
 {
 	std::cout << R	<< "Animal destructor called"
 			<< RST << std::endl;
+}
+
+std::string	Animal::getType() const
+{
+	std::cout	<< C << "getType memCer function called"
+			<< RST << std::endl;
+	return type;}
+
+void Animal::setType(const std::string& type)
+{
+	std::cout	<< C << "setType member function called"
+			<< RST << std::endl;
+	this->type = type;
+}
+
+void	Animal::makeSound()
+{
+	std::cout << D << "There are no animals that can make noise." << RST << std::endl;
 }
