@@ -36,9 +36,10 @@ Animal::~Animal()
 
 std::string	Animal::getType() const
 {
-	std::cout	<< C << "getType memCer function called"
+	std::cout	<< C << "getType member function called"
 			<< RST << std::endl;
-	return type;}
+	return type;
+}
 
 void Animal::setType(const std::string& type)
 {
@@ -47,7 +48,7 @@ void Animal::setType(const std::string& type)
 	this->type = type;
 }
 
-void	Animal::makeSound()
+void	Animal::makeSound() const
 {
 	std::cout << D << "There are no animals that can make noise." << RST << std::endl;
 }

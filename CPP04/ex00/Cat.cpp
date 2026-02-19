@@ -12,7 +12,7 @@ Cat::Cat(const std::string& type) : Animal(type)
 			<< RST << std::endl;
 }
 
-Cat::Cat(const Cat& copy)
+Cat::Cat(const Cat& copy) : Animal(copy)
 {
 	std::cout << B	<< "Cat copy constructor called"
 			<< RST << std::endl;
@@ -32,4 +32,9 @@ Cat::~Cat()
 {
 	std::cout << R	<< "Cat destructor called"
 			<< RST << std::endl;
+}
+
+void	Cat::makeSound() const
+{
+	std::cout << M << "Miyav miyav!" << RST << std::endl;
 }

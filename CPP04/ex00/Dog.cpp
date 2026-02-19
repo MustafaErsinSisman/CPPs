@@ -12,7 +12,7 @@ Dog::Dog(const std::string& type) : Animal(type)
 			<< RST << std::endl;
 }
 
-Dog::Dog(const Dog& copy)
+Dog::Dog(const Dog& copy) : Animal(copy)
 {
 	std::cout << B	<< "Dog copy constructor called"
 			<< RST << std::endl;
@@ -32,4 +32,9 @@ Dog::~Dog()
 {
 	std::cout << R	<< "Dog destructor called"
 			<< RST << std::endl;
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << M << "Hav hav!" << RST << std::endl;
 }
