@@ -16,7 +16,6 @@ Cat::Cat(const Cat& copy) : Animal(copy)
 {
 	std::cout << B	<< "Cat copy constructor called"
 			<< RST << std::endl;
-	*this = copy;
 }
 
 Cat& Cat::operator=(const Cat& copy)
@@ -24,7 +23,7 @@ Cat& Cat::operator=(const Cat& copy)
 	std::cout << Y	<< "Cat copy assignment operator called"
 			<< RST << std::endl;
 	if (this != &copy)
-		this->type = copy.type;
+		Animal::operator=(copy);
 	return *this;
 }
 
@@ -36,5 +35,5 @@ Cat::~Cat()
 
 void	Cat::makeSound() const
 {
-	std::cout << M << "Miyav miyav!" << RST << std::endl;
+	std::cout << M << "Meow meow!" << RST << std::endl;
 }
