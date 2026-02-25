@@ -50,5 +50,5 @@ void Animal::setType(const str& type)
 
 void	Animal::makeSound() const
 {
-	out << D << "There are no animals that can make noise." << RST << end;
+	out << RB << "There are no animals that can make noise." << RST << end;
 }

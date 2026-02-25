@@ -45,12 +45,29 @@ Brain::~Brain()
 
 void	Brain::outIdeas() const
 {
+	out << C << "Brain outIdeas called"
+			<< RST << end;
 	for (size_t i = 0; i < 100; i++)
-		out << GB << "Idea" << i << ": " << ideas[i] << end;
+	{
+		if(ideas[i].empty())
+			break;
+		else
+			out << YB << "Idea " << i + 1 << ": " << ideas[i] << RST << end;
+	}
 }
 
-void	Brain::setIdeas(const str* newIdeas)
+void	Brain::setIdea(int index, const str& idea)
 {
+	out << M << "Brain setIdea called"
+			<< RST << end;
+	if (index >= 0 && index < 100)
+		ideas[index] = idea;
+}
+
+void	Brain::setAllIdeas(const str& idea)
+{
+	out << M << "Brain setAllIdeas called"
+			<< RST << end;
 	for (int i = 0; i < 100; i++)
-		ideas[i] = newIdeas[i];
+		ideas[i] = idea;
 }

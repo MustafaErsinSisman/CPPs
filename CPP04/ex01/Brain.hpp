@@ -38,7 +38,8 @@ class Brain
 		~Brain();
 
 		void	outIdeas() const;
-		void	setIdeas(const str* newIdeas);
+		void	setIdea(int index, const str& idea);
+		void	setAllIdeas(const str& idea);
 	private:
 		str	*ideas;
 };

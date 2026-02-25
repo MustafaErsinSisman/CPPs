@@ -40,7 +40,14 @@ Cat::~Cat()
 	delete brain;
 }
 
+Brain* Cat::getBrain() const
+{
+	out << C	<< "Cat getBrain called"
+			<< RST << end;
+	return this->brain;
+}
+
 void	Cat::makeSound() const
 {
-	out << M << "Meow meow!" << RST << end;
+	out << MB << "Meow meow!" << RST << end;
 }

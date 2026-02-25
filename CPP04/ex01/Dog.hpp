@@ -13,6 +13,8 @@ class Dog : public Animal
 		Dog&	operator=(const Dog& copy);
 		~Dog();
 
+		Brain* getBrain() const;
+
 		void	makeSound() const;
 	private:
 		Brain*	brain;

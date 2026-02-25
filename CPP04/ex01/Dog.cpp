@@ -40,7 +40,14 @@ Dog::~Dog()
 	delete brain;
 }
 
+Brain* Dog::getBrain() const
+{
+	out << C	<< "Dog getBrain called"
+			<< RST << end;
+	return this->brain;
+}
+
 void	Dog::makeSound() const
 {
-	out << M << "Woof woof!" << RST << end;
+	out << CB << "Woof woof!" << RST << end;
 }
