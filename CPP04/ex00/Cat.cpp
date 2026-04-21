@@ -6,19 +6,13 @@ Cat::Cat() : Animal("Cat")
 			<< RST << std::endl;
 }
 
-Cat::Cat(const std::string& type) : Animal(type)
-{
-	std::cout << G	<< "Cat parameterized constructor called"
-			<< RST << std::endl;
-}
-
 Cat::Cat(const Cat& copy) : Animal(copy)
 {
 	std::cout << B	<< "Cat copy constructor called"
 			<< RST << std::endl;
 }
 
-Cat& Cat::operator=(const Cat& copy)
+Cat&	Cat::operator=(const Cat& copy)
 {
 	std::cout << Y	<< "Cat copy assignment operator called"
 			<< RST << std::endl;
@@ -35,5 +29,6 @@ Cat::~Cat()
 
 void	Cat::makeSound() const
 {
-	std::cout << M << "Meow meow!" << RST << std::endl;
+	std::cout << M	<< "Meow meow!"
+			<< RST << std::endl;
 }

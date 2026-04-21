@@ -2,29 +2,22 @@
 
 Dog::Dog() : AAnimal("Dog")
 {
-	out << G	<< "Dog default constructor called"
-			<< RST << end;
-	brain = new Brain();
-}
-
-Dog::Dog(const str& type) : AAnimal(type)
-{
-	out << G	<< "Dog parameterized constructor called"
-			<< RST << end;
+	std::cout << G	<< "Dog default constructor called"
+			<< RST << std::endl;
 	brain = new Brain();
 }
 
 Dog::Dog(const Dog& copy) : AAnimal(copy)
 {
-	out << B	<< "Dog copy constructor called"
-			<< RST << end;
+	std::cout << B	<< "Dog copy constructor called"
+			<< RST << std::endl;
 	brain = new Brain(*copy.brain);
 }
 
 Dog& Dog::operator=(const Dog& copy)
 {
-	out << Y	<< "Dog copy assignment operator called"
-			<< RST << end;
+	std::cout << Y	<< "Dog copy assignment operator called"
+			<< RST << std::endl;
 	if (this != &copy)
 	{
 		AAnimal::operator=(copy);
@@ -35,19 +28,19 @@ Dog& Dog::operator=(const Dog& copy)
 
 Dog::~Dog()
 {
-	out << R	<< "Dog destructor called"
-			<< RST << end;
+	std::cout << R	<< "Dog destructor called"
+			<< RST << std::endl;
 	delete brain;
 }
 
 Brain* Dog::getBrain() const
 {
-	out << C	<< "Dog getBrain called"
-			<< RST << end;
+	std::cout << C	<< "Dog getBrain called"
+			<< RST << std::endl;
 	return this->brain;
 }
 
 void	Dog::makeSound() const
 {
-	out << CB << "Woof woof!" << RST << end;
+	std::cout << CB << "Woof woof!" << RST << std::endl;
 }

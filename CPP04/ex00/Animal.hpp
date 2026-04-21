@@ -30,12 +30,11 @@ class Animal
 		Animal(const std::string& type);
 		Animal(const Animal& copy);
 		Animal&		operator=(const Animal& copy);
-		virtual ~Animal();
+		virtual		~Animal();
 
 		std::string	getType() const;
-		void		setType(const std::string& type);
 
-		virtual void		makeSound() const;
+		virtual void	makeSound() const;
 	protected:
 		std::string	type;
 };

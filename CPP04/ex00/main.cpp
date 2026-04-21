@@ -6,12 +6,12 @@ int main()
 {
 	std::cout << M << "\n--- 1. SUBJECT TESTS (Polymorphism) ---\n" << RST << std::endl;
 
-	std::cout << Y << "Constructing Animal, Dog, and Cat...\n" << RST << std::endl;
+	std::cout << Y << "Constructing Animal, Dog, and Cat from Animal...\n" << RST << std::endl;
 	const Animal*	meta = new Animal();
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();
 
-	std::cout << Y << "\nConstructing concrete Dog and Cat...\n" << RST << std::endl;
+	std::cout << Y << "\nConstructing Dog and Cat from itself...\n" << RST << std::endl;
 	const Dog*	d = new Dog();
 	const Cat*	c = new Cat();
 
@@ -22,7 +22,7 @@ int main()
 	std::cout << d->getType() << " " << std::endl;
 	std::cout << c->getType() << " " << std::endl;
 
-	std::cout << W << "\nChecking sounds:\n" << RST << std::endl;
+	std::cout << Y << "\nChecking sounds:\n" << RST << std::endl;
 	c->makeSound();
 	d->makeSound();
 	i->makeSound();
@@ -41,17 +41,18 @@ int main()
 	const WrongAnimal*	k = new WrongCat();
 	const WrongCat*		wc = new WrongCat();
 
-	std::cout << W << "\nChecking types:\n" << RST << std::endl;
+	std::cout << Y << "\nChecking types:\n" << RST << std::endl;
 	std::cout << k->getType() << " " << std::endl;
 	std::cout << wc->getType() << " " << std::endl;
 
-	std::cout << W << "\nChecking sounds (Expect WrongAnimal sound for 'k'):\n" << RST << std::endl;
+	std::cout << Y << "\nChecking sounds (Expect WrongAnimal sound for 'k'):\n" << RST << std::endl;
 	k->makeSound();
 	wc->makeSound();
 
 	std::cout << Y << "\nDestructing objects...\n" << RST << std::endl;
 	delete wc;
 	delete k;
+
 	std::cout << M << "\n--- END OF TESTS ---\n" << RST << std::endl;
 	return 0;
 }

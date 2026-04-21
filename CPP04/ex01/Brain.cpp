@@ -2,32 +2,32 @@
 
 Brain::Brain()
 {
-	out << G	<< "Brain default constructor called"
-			<< RST << end;
-	ideas = new str[100];
+	std::cout << G	<< "Brain default constructor called"
+			<< RST << std::endl;
+	ideas = new std::string[100];
 }
 
-Brain::Brain(const str* newIdeas)
+Brain::Brain(const std::string* newIdeas)
 {
-	out << G	<< "Brain parameterized constructor called"
-			<< RST << end;
-	ideas = new str[100];
+	std::cout << G	<< "Brain parameterized constructor called"
+			<< RST << std::endl;
+	ideas = new std::string[100];
 	for (int i = 0; i < 100; i++)
 		ideas[i] = newIdeas[i];
 }
 
 Brain::Brain(const Brain& copy)
 {
-	out << B	<< "Brain copy constructor called"
-			<< RST << end;
-	ideas = new str[100];
+	std::cout << B	<< "Brain copy constructor called"
+			<< RST << std::endl;
+	ideas = new std::string[100];
 	*this = copy;
 }
 
 Brain&	Brain::operator=(const Brain& copy)
 {
-	out << Y	<< "Brain copy assignment operator called"
-			<< RST << end;
+	std::cout << Y	<< "Brain copy assignment operator called"
+			<< RST << std::endl;
 	if (this != &copy)
 	{
 		for (int i = 0; i < 100; i++)
@@ -38,36 +38,36 @@ Brain&	Brain::operator=(const Brain& copy)
 
 Brain::~Brain()
 {
-	out << R	<< "Brain destructor called"
-			<< RST << end;
+	std::cout << R	<< "Brain destructor called"
+			<< RST << std::endl;
 	delete[] ideas;
 }
 
 void	Brain::outIdeas() const
 {
-	out << C << "Brain outIdeas called"
-			<< RST << end;
+	std::cout << C	<< "Brain outIdeas called"
+			<< RST << std::endl;
 	for (size_t i = 0; i < 100; i++)
 	{
 		if(ideas[i].empty())
 			break;
 		else
-			out << YB << "Idea " << i + 1 << ": " << ideas[i] << RST << end;
+			std::cout << YB << "Idea " << i + 1 << ": " << ideas[i] << RST << std::endl;
 	}
 }
 
-void	Brain::setIdea(int index, const str& idea)
+void	Brain::setIdea(int index, const std::string& idea)
 {
-	out << M << "Brain setIdea called"
-			<< RST << end;
+	std::cout << M	<< "Brain setIdea called"
+			<< RST << std::endl;
 	if (index >= 0 && index < 100)
 		ideas[index] = idea;
 }
 
-void	Brain::setAllIdeas(const str& idea)
+void	Brain::setAllIdeas(const std::string& idea)
 {
-	out << M << "Brain setAllIdeas called"
-			<< RST << end;
+	std::cout << M	<< "Brain setAllIdeas called"
+			<< RST << std::endl;
 	for (int i = 0; i < 100; i++)
 		ideas[i] = idea;
 }

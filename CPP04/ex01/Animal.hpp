@@ -23,26 +23,20 @@
 # define CB	"\033[46m"
 # define WB	"\033[47m"
 
-# define str	std::string
-# define out	std::cout
-# define in	std::in
-# define end	std::endl;
-
 class Animal
 {
 	public:
 		Animal();
-		Animal(const str& type);
+		Animal(const std::string& type);
 		Animal(const Animal& copy);
 		Animal&		operator=(const Animal& copy);
 		virtual ~Animal();
 
-		str	getType() const;
-		void		setType(const str& type);
+		std::string	getType() const;
 
 		virtual void		makeSound() const;
 	protected:
-		str	type;
+		std::string	type;
 };
 
 #endif

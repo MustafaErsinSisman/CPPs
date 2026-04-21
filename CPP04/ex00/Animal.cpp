@@ -19,7 +19,7 @@ Animal::Animal(const Animal& copy)
 	*this = copy;
 }
 
-Animal&	Animal::operator=(const Animal& copy)
+Animal&		Animal::operator=(const Animal& copy)
 {
 	std::cout << Y	<< "Animal copy assignment operator called"
 			<< RST << std::endl;
@@ -36,19 +36,13 @@ Animal::~Animal()
 
 std::string	Animal::getType() const
 {
-	std::cout	<< C << "getType member function called"
+	std::cout << C	<< "getType member function called"
 			<< RST << std::endl;
 	return type;
 }
 
-void Animal::setType(const std::string& type)
+void		Animal::makeSound() const
 {
-	std::cout	<< C << "setType member function called"
+	std::cout << W	<< "There are no animals that can make noise."
 			<< RST << std::endl;
-	this->type = type;
-}
-
-void	Animal::makeSound() const
-{
-	std::cout << D << "There are no animals that can make noise." << RST << std::endl;
 }

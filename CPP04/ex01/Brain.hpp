@@ -23,25 +23,20 @@
 # define CB	"\033[46m"
 # define WB	"\033[47m"
 
-# define str	std::string
-# define out	std::cout
-# define in	std::in
-# define end	std::endl;
-
 class Brain
 {
 	public:
 		Brain();
-		Brain(const str* newIdeas);
+		Brain(const std::string* newIdeas);
 		Brain(const Brain& copy);
-		Brain&		operator=(const Brain& copy);
+		Brain&	operator=(const Brain& copy);
 		~Brain();
 
 		void	outIdeas() const;
-		void	setIdea(int index, const str& idea);
-		void	setAllIdeas(const str& idea);
+		void	setIdea(int index, const std::string& idea);
+		void	setAllIdeas(const std::string& idea);
 	private:
-		str	*ideas;
+		std::string	*ideas;
 };
 
 #endif

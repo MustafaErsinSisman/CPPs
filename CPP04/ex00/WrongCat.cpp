@@ -6,12 +6,6 @@ WrongCat::WrongCat() : WrongAnimal("WrongCat")
 			<< RST << std::endl;
 }
 
-WrongCat::WrongCat(const std::string& type) : WrongAnimal(type)
-{
-	std::cout << G	<< "WrongCat parameterized constructor called"
-			<< RST << std::endl;
-}
-
 WrongCat::WrongCat(const WrongCat& copy) : WrongAnimal(copy)
 {
 	std::cout << B	<< "WrongCat copy constructor called"

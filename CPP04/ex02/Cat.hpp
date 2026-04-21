@@ -8,7 +8,6 @@ class Cat : public AAnimal
 {
 	public:
 		Cat();
-		Cat(const str& type);
 		Cat(const Cat& copy);
 		Cat&	operator=(const Cat& copy);
 		~Cat();

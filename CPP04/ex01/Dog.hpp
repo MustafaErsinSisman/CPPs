@@ -8,7 +8,6 @@ class Dog : public Animal
 {
 	public:
 		Dog();
-		Dog(const str& type);
 		Dog(const Dog& copy);
 		Dog&	operator=(const Dog& copy);
 		~Dog();

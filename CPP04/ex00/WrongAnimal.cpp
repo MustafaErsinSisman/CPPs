@@ -36,19 +36,13 @@ WrongAnimal::~WrongAnimal()
 
 std::string	WrongAnimal::getType() const
 {
-	std::cout	<< C << "getType member function called"
+	std::cout << C	<< "getType member function called"
 			<< RST << std::endl;
 	return type;
 }
 
-void WrongAnimal::setType(const std::string& type)
-{
-	std::cout	<< C << "setType member function called"
-			<< RST << std::endl;
-	this->type = type;
-}
-
 void	WrongAnimal::makeSound() const
 {
-	std::cout << D << "There are no wronganimals that can make noise." << RST << std::endl;
+	std::cout << W	<< "There are no wronganimals that can make noise."
+			<< RST << std::endl;
 }

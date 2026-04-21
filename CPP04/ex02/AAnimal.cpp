@@ -2,27 +2,27 @@
 
 AAnimal::AAnimal() : type("AAnimal")
 {
-	out << G	<< "AAnimal default constructor called"
-			<< RST << end;
+	std::cout << G	<< "AAnimal default constructor called"
+			<< RST << std::endl;
 }
 
-AAnimal::AAnimal(const str& type) : type(type)
+AAnimal::AAnimal(const std::string& type) : type(type)
 {
-	out << G	<< "AAnimal parameterized constructor called"
-			<< RST << end;
+	std::cout << G	<< "AAnimal parameterized constructor called"
+			<< RST << std::endl;
 }
 
 AAnimal::AAnimal(const AAnimal& copy)
 {
-	out << B	<< "AAnimal copy constructor called"
-			<< RST << end;
+	std::cout << B	<< "AAnimal copy constructor called"
+			<< RST << std::endl;
 	*this = copy;
 }
 
 AAnimal&	AAnimal::operator=(const AAnimal& copy)
 {
-	out << Y	<< "AAnimal copy assignment operator called"
-			<< RST << end;
+	std::cout << Y	<< "AAnimal copy assignment operator called"
+			<< RST << std::endl;
 	if (this != &copy)
 		this->type = copy.type;
 	return *this;
@@ -30,25 +30,20 @@ AAnimal&	AAnimal::operator=(const AAnimal& copy)
 
 AAnimal::~AAnimal()
 {
-	out << R	<< "AAnimal destructor called"
-			<< RST << end;
+	std::cout << R	<< "AAnimal destructor called"
+			<< RST << std::endl;
 }
 
-str	AAnimal::getType() const
+std::string	AAnimal::getType() const
 {
-	out	<< C << "getType member function called"
-			<< RST << end;
+	std::cout << C	<< "getType member function called"
+			<< RST << std::endl;
 	return type;
 }
 
-void AAnimal::setType(const str& type)
-{
-	out	<< C << "setType member function called"
-			<< RST << end;
-	this->type = type;
-}
 
 void	AAnimal::makeSound() const
 {
-	out << RB << "There are no Aanimals that can make noise." << RST << end;
+	std::cout << RB	<< "There are no Aanimals that can make noise."
+			<< RST << std::endl;
 }
