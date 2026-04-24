@@ -1,22 +1,25 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Bureaucrat")
+Bureaucrat::Bureaucrat() : name("Bureaucrat") , grade(150)
 {
 	std::cout << G	<< "Bureaucrat default constructor called"
 			<< RST << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string& name) : name(name)
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade)
 {
 	std::cout << G	<< "Bureaucrat parameterized constructor called"
 			<< RST << std::endl;
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy)
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : name(copy.name), grade(copy.grade)
 {
 	std::cout << B	<< "Bureaucrat copy constructor called"
 			<< RST << std::endl;
-	*this = copy;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
@@ -24,7 +27,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 	std::cout << Y	<< "Bureaucrat copy assignment operator called"
 			<< RST << std::endl;
 	if (this != &copy)
-		this->name = copy.name; //TODO const kurallarına bak
+		this->grade = copy.grade;
 	return *this;
 }
 
@@ -34,6 +37,50 @@ Bureaucrat::~Bureaucrat()
 			<< RST << std::endl;
 }
 
-const std::string Bureaucrat::getName() { return name; }
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
 
-int Bureaucrat::getGrade() { return grade; }
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
+}
+
+const std::string& Bureaucrat::getName() const
+{
+	return name;
+}
+
+int Bureaucrat::getGrade() const
+{
+	return grade;
+}
+	
+void Bureaucrat::incrementGrade()
+{
+	if (grade <= 1)
+		throw GradeTooHighException();
+	else
+		grade--;
+}
+
+void Bureaucrat::decrementGrade()
+{
+	if (grade >= 150)
+		throw GradeTooLowException();
+	else
+		grade++;
+}
+
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat)
+{
+	out << GB << bureaucrat.getName() << ", grade: " << bureaucrat.getGrade() << RST << std::endl;
+	return out;
+}
+
+std::ostream& operator<<(std::ostream& err, const std::exception& e)
+{
+	err << RB << "Exception: " << e.what() << RST << std::endl;
+	return err;
+}
