@@ -54,7 +54,7 @@ class Bureaucrat
 		int grade;
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
 
 std::ostream& operator<<(std::ostream& err, const std::exception& e);
 
