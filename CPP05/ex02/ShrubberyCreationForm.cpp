@@ -1,18 +1,18 @@
 # include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) , target("Target")
 {
 	std::cout << G	<< "Shrubbery Creation Form default constructor called"
 			<< RST << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name, int signGrade, int execGrade) : AForm(name, signGrade, execGrade)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
 	std::cout << G	<< "Shrubbery Creation Form parameterized constructor called"
 			<< RST << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), target(copy.target)
 {
 	std::cout << G	<< "Shrubbery Creation Form copy constructor called"
 			<< RST << std::endl;
@@ -33,9 +33,25 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 			<< RST << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& out, const ShrubberyCreationForm& s)
+void ShrubberyCreationForm::drawTree() const
 {
-	out << YB <<s.getName() << ", is signed: " << std::boolalpha << s.getIsSigned() << ", sign grade: "
-		<< s.getSignGrade() << ", exec grade: " << s.getExecGrade() << RST << std::endl;
-	return out;
+	try
+	{
+		std::string filename = target + "_shrubbery";
+		std::ofstream out(filename.c_str());
+		out << "       _-_" << std::endl;
+		out << "    /~~   ~~\\" << std::endl;
+		out << " /~~         ~~\\" << std::endl;
+		out << "{               }" << std::endl;
+		out << " \\  _-     -_  /" << std::endl;
+		out << "   ~  \\\\ //  ~" << std::endl;
+		out << "_- -   | | _- _" << std::endl;
+		out << "  _ -  | |   -_" << std::endl;
+		out << "      // \\\\" << std::endl;
+		out.close();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 }

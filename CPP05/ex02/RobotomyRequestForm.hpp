@@ -7,15 +7,14 @@ class RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(const std::string& name, int signGrade, int execGrade);
+		RobotomyRequestForm(const std::string& target);
 		RobotomyRequestForm(const RobotomyRequestForm& copy);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
 		~RobotomyRequestForm();
-
-	private:
 		
+		void makeRobotomy() const;
+	private:
+		const std::string target;
 };
-
-std::ostream& operator<<(std::ostream& out, const RobotomyRequestForm& r);
 
 #endif

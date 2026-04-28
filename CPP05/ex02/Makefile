@@ -18,6 +18,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $$(ls | grep "_shrubbery$$") 
 
 run:all
 	@./${NAME}

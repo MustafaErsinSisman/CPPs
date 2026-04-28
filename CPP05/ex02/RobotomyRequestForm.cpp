@@ -1,18 +1,18 @@
 # include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), target("Target")
 {
 	std::cout << G	<< "Robotomy Request Form default constructor called"
 			<< RST << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int signGrade, int execGrade) : AForm(name, signGrade, execGrade)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
 	std::cout << G	<< "Robotomy Request Form parameterized constructor called"
 			<< RST << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), target(copy.target)
 {
 	std::cout << G	<< "Robotomy Request Form copy constructor called"
 			<< RST << std::endl;
@@ -33,9 +33,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
 			<< RST << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& out, const RobotomyRequestForm& r)
+void RobotomyRequestForm::makeRobotomy() const
 {
-	out << YB <<r.getName() << ", is signed: " << std::boolalpha << r.getIsSigned() << ", sign grade: "
-		<< r.getSignGrade() << ", exec grade: " << r.getExecGrade() << RST << std::endl;
-	return out;
+	std::cout << YB << "Bzzzz... Vrrrrrr..." << RST << std::endl;
+	// if (std::rand() % 2)
+	// 	std::cout << GB << target << " has been robotomized successfully." << RST << std::endl;
+	// else
+	// 	std::cout << RB << "Failed to robotomize " << target << "." << RST << std::endl;
 }
