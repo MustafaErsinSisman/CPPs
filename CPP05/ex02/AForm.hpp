@@ -3,6 +3,8 @@
 
 # include <iostream>
 
+# include "Bureaucrat.hpp"
+
 # define RST	"\033[0m"
 
 # define D	"\033[1;30m"
@@ -22,8 +24,6 @@
 # define MB	"\033[45m"
 # define CB	"\033[46m"
 # define WB	"\033[47m"
-
-class Bureaucrat;
 
 class AForm
 {
@@ -46,12 +46,24 @@ class AForm
 				const char* what() const throw();
 		};
 
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+
+
 		const std::string& getName() const;
 		bool getIsSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
 
 		void beSigned(const Bureaucrat& b);
+
+		void execute(Bureaucrat const & executor) const;
+
+	protected:
+		virtual void executeFunction() const = 0;
 
 	private:
 		const std::string name;

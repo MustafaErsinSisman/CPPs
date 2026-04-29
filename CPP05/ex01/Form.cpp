@@ -15,13 +15,13 @@ Form::Form(const std::string& name, int signGrade, int execGrade) : name(name),
 	std::cout << G	<< "Form parameterized constructor called"
 			<< RST << std::endl;
 	if (signGrade < 1)
-		throw Form::GradeTooHighException();
+		throw GradeTooHighException();
 	else if (signGrade > 150)
-		throw Form::GradeTooLowException();
+		throw GradeTooLowException();
 	if (execGrade < 1)
-		throw Form::GradeTooHighException();
+		throw GradeTooHighException();
 	else if (execGrade > 150)
-		throw Form::GradeTooLowException();
+		throw GradeTooLowException();
 }
 
 Form::Form(const Form& copy) : name(copy.name),

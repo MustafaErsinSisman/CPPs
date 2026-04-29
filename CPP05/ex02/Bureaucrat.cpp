@@ -83,18 +83,27 @@ void Bureaucrat::signForm(AForm& aform) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << RB <<  name << " couldn't sign " << aform.getName() << " because " << e.what() << RST <<std::endl;
+		std::cerr << RB <<  name << " couldn't sign " << aform.getName()
+				<< " because " << e.what() << RST <<std::endl;
 	}	
+}
+
+void Bureaucrat::executeForm(const AForm& form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << GB << name << " executed " << form.getName() << "." << RST << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RB << name << " couldn't execute " << form.getName()
+				<< " because " << e.what() << RST << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
 	out << GB << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << RST << std::endl;
 	return out;
-}
-
-std::ostream& operator<<(std::ostream& err, const std::exception& e)
-{
-	err << RB << "Exception: " << e.what() << RST << std::endl;
-	return err;
 }

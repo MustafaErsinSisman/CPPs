@@ -10,21 +10,42 @@ void line()
 }
 int main()
 {
-	ShrubberyCreationForm shrubbery("Garden");
-	RobotomyRequestForm robotomy("Mershim");
-	PresidentialPardonForm presidential("Mershim");
-
-	AForm forms[3] = {shrubbery, robotomy, presidential};
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
 	line();
-	for (size_t i = 0; i < 3; i++)
-	{
-		std::cout << forms[i];
-	}
-	
-	line();
-	shrubbery.drawTree();
+
+	Bureaucrat boss("Mershim", 1);
+	Bureaucrat manager("Manager", 40);
+	Bureaucrat intern("Intern", 140);
 
 	line();
+
+	ShrubberyCreationForm shrubberry("Garden");
+	RobotomyRequestForm robot("My arm");
+	PresidentialPardonForm pardon("Fake Criminal");
+
+	line();
+
+	boss.executeForm(shrubberry); 
+	intern.signForm(shrubberry);
+	intern.executeForm(shrubberry);
+	boss.executeForm(shrubberry);
+
+	line();
+
+	manager.signForm(robot);
+	manager.executeForm(robot);
+	boss.executeForm(robot);
+	boss.executeForm(robot);
+
+	line();
+
+	manager.signForm(pardon);
+	boss.signForm(pardon);
+	manager.executeForm(pardon);
+	boss.executeForm(pardon);
+
+	line();
+
 	return 0;
 }

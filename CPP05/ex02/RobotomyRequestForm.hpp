@@ -2,6 +2,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
+# include <cstdlib>
+# include <ctime>
 
 class RobotomyRequestForm : public AForm
 {
@@ -13,8 +15,11 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm();
 		
 		void makeRobotomy() const;
+
+		void executeFunction() const;
+
 	private:
-		const std::string target;
+		std::string target;
 };
 
 #endif

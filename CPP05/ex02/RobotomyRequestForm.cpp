@@ -23,7 +23,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& c
 	std::cout << Y	<< "Robotomy Request Form copy assignment operator called"
 			<< RST << std::endl;
 	if (this != &copy)
+	{
 		AForm::operator=(copy);
+		target = copy.target;
+	}
 	return *this;
 }
 
@@ -35,9 +38,14 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::makeRobotomy() const
 {
-	std::cout << YB << "Bzzzz... Vrrrrrr..." << RST << std::endl;
-	// if (std::rand() % 2)
-	// 	std::cout << GB << target << " has been robotomized successfully." << RST << std::endl;
-	// else
-	// 	std::cout << RB << "Failed to robotomize " << target << "." << RST << std::endl;
+	std::cout << YB << "Bzzzz... Vrrrrrr... (some drilling noise)" << RST << std::endl;
+	if (std::rand() % 2)
+		std::cout << GB << target << " has been robotomized successfully." << RST << std::endl;
+	else
+		std::cout << RB << "Failed to robotomize " << target << "." << RST << std::endl;
+}
+
+void RobotomyRequestForm::executeFunction() const
+{
+    makeRobotomy();
 }

@@ -52,13 +52,14 @@ class Bureaucrat
 		void decrementGrade();
 
 		void signForm(AForm& aform) const;
+
+		void executeForm(const AForm& form) const;
+
 	private:
 		const std::string name;
 		int grade;
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
-
-std::ostream& operator<<(std::ostream& err, const std::exception& e);
 
 #endif

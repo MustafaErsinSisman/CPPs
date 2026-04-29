@@ -15,8 +15,11 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		void drawTree() const;
+
+		void executeFunction() const;
+
 	private:
-		const std::string target;
+		std::string target;
 };
 
 #endif

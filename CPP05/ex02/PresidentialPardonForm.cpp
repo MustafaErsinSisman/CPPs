@@ -23,7 +23,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	std::cout << Y	<< "Presidential Pardon Form copy assignment operator called"
 			<< RST << std::endl;
 	if (this != &copy)
+	{
 		AForm::operator=(copy);
+		target = copy.target;
+	}
 	return *this;
 }
 
@@ -36,4 +39,9 @@ PresidentialPardonForm::~PresidentialPardonForm()
 void PresidentialPardonForm::pardon() const
 {
 	std::cout << YB << target << " has been pardoned by Zaphod Beeblebrox." << RST << std::endl;
+}
+
+void PresidentialPardonForm::executeFunction() const
+{
+    pardon();
 }

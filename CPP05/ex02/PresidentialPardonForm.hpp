@@ -13,8 +13,11 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm();
 
 		void pardon() const;
+		
+		void executeFunction() const;
+
 	private:
-		const std::string target;
+		std::string target;
 };
 
 #endif

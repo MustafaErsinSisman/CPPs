@@ -23,7 +23,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	std::cout << Y	<< "Shrubbery Creation Form copy assignment operator called"
 			<< RST << std::endl;
 	if (this != &copy)
+	{
 		AForm::operator=(copy);
+		target = copy.target;
+	}
 	return *this;
 }
 
@@ -39,19 +42,51 @@ void ShrubberyCreationForm::drawTree() const
 	{
 		std::string filename = target + "_shrubbery";
 		std::ofstream out(filename.c_str());
-		out << "       _-_" << std::endl;
-		out << "    /~~   ~~\\" << std::endl;
-		out << " /~~         ~~\\" << std::endl;
-		out << "{               }" << std::endl;
-		out << " \\  _-     -_  /" << std::endl;
-		out << "   ~  \\\\ //  ~" << std::endl;
-		out << "_- -   | | _- _" << std::endl;
-		out << "  _ -  | |   -_" << std::endl;
-		out << "      // \\\\" << std::endl;
+
+		const std::string trees[] =
+		{
+        		"                                   .         ;",
+        		"      .              .              ;%     ;;",
+        		"        ,           ,                :;%  %;",
+        		"         :         ;                   :;%;'     .,",
+        		",.        %;     %;            ;        %;'    ,;",
+        		"  ;       ;%;  %%;        ,     %;    ;%;    ,%'",
+        		"   %;       %;%;      ,  ;       %;  ;%;   ,%;'",
+        		"    ;%;      %;        ;%;        % ;%;  ,%;'",
+        		"     `%;.     ;%;     %;'         `;%%;.%;'",
+        		"      `:;%.    ;%%. %@;        %; ;@%;%'",
+        		"         `:%;.  :;bd%;          %;@%;'",
+        		"           `@%:.  :;%.         ;@@%;'",
+        		"             `@%.  `;@%.      ;@@%;",
+        		"               `@%%. `@%%    ;@@%;",
+        		"                 ;@%. :@%%  %@@%;",
+        		"                   %@bd%%%bd%%:;",
+        		"                     #@%%%%%:;;",
+        		"                     %@@%%%::;",
+        		"                     %@@@%(o);  . '",
+        		"                     %@@@o%;:(.,'",
+        		"                 `.. %@@@o%::;",
+        		"                    `)@@@o%::;",
+        		"                     %@@(o)::;",
+        		"                    .%@@@@%::;",
+        		"                    ;%@@@@%::;.",
+        		"                   ;%@@@@%%:;;;.",
+        		"               ...;%@@@@@%%:;;;;,.."
+    		};
+	
+		size_t treeSize = sizeof(trees) / sizeof(trees[0]);
+   		for (size_t i = 0; i < treeSize; ++i)
+       			out << trees[i] << "\n";
+
 		out.close();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
+}
+
+void ShrubberyCreationForm::executeFunction() const
+{
+    drawTree();
 }

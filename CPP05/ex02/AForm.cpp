@@ -15,13 +15,13 @@ AForm::AForm(const std::string& name, int signGrade, int execGrade) : name(name)
 	std::cout << G	<< "AForm parameterized constructor called"
 			<< RST << std::endl;
 	if (signGrade < 1)
-		throw AForm::GradeTooHighException();
+		throw GradeTooHighException();
 	else if (signGrade > 150)
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 	if (execGrade < 1)
-		throw AForm::GradeTooHighException();
+		throw GradeTooHighException();
 	else if (execGrade > 150)
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 }
 
 AForm::AForm(const AForm& copy) : name(copy.name),
@@ -58,6 +58,11 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return "Bureaucrat grade is too low!";
 }
 
+const char* AForm::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed!";
+}
+
 const std::string& AForm::getName() const
 {
 	return name;
@@ -81,9 +86,18 @@ int AForm::getExecGrade() const
 void AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > signGrade)
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 	else
 		isSigned = true;
+}
+
+void AForm::execute(const Bureaucrat& executor) const
+{
+	if (!isSigned)
+		throw FormNotSignedException();
+	if (executor.getGrade() > execGrade)
+		throw GradeTooLowException();
+	executeFunction();
 }
 
 std::ostream& operator<<(std::ostream& out, const AForm& f)
