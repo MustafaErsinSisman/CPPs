@@ -1,14 +1,8 @@
 #include "Intern.hpp"
 
-Intern::Intern() : name("Intern") , target("Target")
+Intern::Intern()
 {
 	std::cout << G	<< "Intern default constructor called"
-			<< RST << std::endl;
-}
-
-Intern::Intern(const std::string& name, const std::string& target) : name(name), target(target)
-{
-	std::cout << G	<< "Intern parameterized constructor called"
 			<< RST << std::endl;
 }
 
@@ -23,11 +17,7 @@ Intern& Intern::operator=(const Intern& copy)
 {
 	std::cout << Y	<< "Intern copy assignment operator called"
 			<< RST << std::endl;
-	if (this != &copy)
-	{
-		name = copy.name;
-		target = copy.target;
-	}
+	(void)copy;
 	return *this;
 }
 
@@ -37,13 +27,48 @@ Intern::~Intern()
 			<< RST << std::endl;
 }
 
-const std::string& Intern::getName() const
+AForm* Intern::createShrubberyCreationForm(const std::string& target) const
 {
-	return name;
+	return new ShrubberyCreationForm(target);
 }
 
-const std::string& Intern::getTarget() const
+AForm* Intern::createRobotomyRequestForm(const std::string& target) const
 {
-	return target;
+	return new RobotomyRequestForm(target);
 }
 
+AForm* Intern::createPresidentialPardonForm(const std::string& target) const
+{
+	return new PresidentialPardonForm(target);
+}
+
+AForm* Intern::makeForm(const std::string& name, const std::string& target) const
+{
+	std::string formNames[3] =
+	{
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon"
+	};
+
+	const int formCount = sizeof(formNames) / sizeof(formNames[0]);
+
+	AForm* (Intern::*formCreators[formCount])(const std::string&) const =
+	{
+		&Intern::createShrubberyCreationForm,
+		&Intern::createRobotomyRequestForm,
+		&Intern::createPresidentialPardonForm
+	};
+
+	for (int i = 0; i < formCount; i++)
+	{
+		if (name == formNames[i])
+		{
+			std::cout << GB	<< "Intern creates " << name << RST << std::endl;
+			return (this->*formCreators[i])(target);
+		}
+	}
+
+	std::cout << RB	<< "Intern cannot create " << name << " because it is an unknown form type." << RST << std::endl;
+	return NULL;
+}

@@ -1,8 +1,6 @@
 # include "Bureaucrat.hpp"
 # include "AForm.hpp"
-# include "ShrubberyCreationForm.hpp"
-# include "RobotomyRequestForm.hpp"
-# include "PresidentialPardonForm.hpp"
+# include "Intern.hpp"
 
 void line()
 {
@@ -15,37 +13,51 @@ int main()
 	line();
 
 	Bureaucrat boss("Mershim", 1);
-	Bureaucrat manager("Manager", 40);
-	Bureaucrat intern("Intern", 140);
+	Intern intern;
 
 	line();
 
-	ShrubberyCreationForm shrubberry("Garden");
-	RobotomyRequestForm robot("My arm");
-	PresidentialPardonForm pardon("Fake Criminal");
+	AForm* sf = intern.makeForm("shrubbery creation", "Garden");
+	AForm* rf = intern.makeForm("robotomy request", "Arm");
+	AForm* pf = intern.makeForm("presidential pardon", "Fake Criminal");
 
 	line();
 
-	boss.executeForm(shrubberry); 
-	intern.signForm(shrubberry);
-	intern.executeForm(shrubberry);
-	boss.executeForm(shrubberry);
+	std::cout << *sf << std::endl;
+	std::cout << *rf << std::endl;
+	std::cout << *pf << std::endl;
 
 	line();
 
-	manager.signForm(robot);
-	manager.executeForm(robot);
-	boss.executeForm(robot);
-	boss.executeForm(robot);
+	boss.signForm(*sf);
+	boss.signForm(*rf);
+	boss.signForm(*pf);
 
 	line();
 
-	manager.signForm(pardon);
-	boss.signForm(pardon);
-	manager.executeForm(pardon);
-	boss.executeForm(pardon);
+	boss.executeForm(*sf);
+	boss.executeForm(*rf);
+	boss.executeForm(*pf);
 
 	line();
+
+	AForm* unknownForm = intern.makeForm("unknown form", "Target");
+
+	if (unknownForm)
+	{
+		std::cout << "How can this be? The intern created an unknown form! Unbelievable" << std::endl;
+		std::cout << *unknownForm << std::endl;
+		boss.signForm(*unknownForm);
+		boss.executeForm(*unknownForm);
+		delete unknownForm;
+	}
+
+	line();
+
+	delete sf;
+	delete rf;
+	delete pf;
+	delete unknownForm;
 
 	return 0;
 }
