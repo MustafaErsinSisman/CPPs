@@ -50,12 +50,12 @@ Form::~Form()
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return "Bureaucrat grade is too high!";
+	return "grade is too high!";
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return "Bureaucrat grade is too low!";
+	return "grade is too low!";
 }
 
 const std::string& Form::getName() const

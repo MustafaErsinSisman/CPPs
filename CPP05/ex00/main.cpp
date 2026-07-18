@@ -8,7 +8,7 @@ int main()
 
 	std::cout << boss;
 	std::cout << employee;
-	std::cout << copyBoss;
+	std::cout << "Copy: " << copyBoss;
 
 	try
 	{
